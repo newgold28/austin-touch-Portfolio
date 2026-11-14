@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>CV — %%NAME%%, Graphic Designer</title>
+<meta name="description" content="CV of %%NAME%%, graphic designer in Nigeria."/>
+<style>
+@font-face{font-family:"Bebas Neue";src:url(data:font/woff2;base64,%%BEBAS%%) format("woff2")}
+@font-face{font-family:"Montserrat";font-weight:500;src:url(data:font/woff2;base64,%%M500%%) format("woff2")}
+@font-face{font-family:"Montserrat";font-weight:700;src:url(data:font/woff2;base64,%%M700%%) format("woff2")}
+:root{--blue:#2251ff;--ink:#111318;--mut:#5d6070}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#e9eaef;color:var(--ink);font:500 13.5px/1.6 "Montserrat",sans-serif}
+a{color:inherit}
+.bar{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 4vw;background:rgba(233,234,239,.9);backdrop-filter:blur(10px)}
+.bar a{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:999px;font-weight:700;font-size:13px;text-decoration:none;transition:translate .3s,background .3s}
+.back{background:#fff;border:1px solid rgba(0,0,0,.1)}
+.dl{background:var(--blue);color:#fff}
+.bar a:hover{translate:0 -2px}
+.page{width:min(820px,94vw);margin:20px auto 60px;background:#fff;padding:64px 70px;box-shadow:0 20px 60px -30px rgba(0,0,0,.35);border-radius:4px}
+header{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;border-bottom:3px solid var(--ink);padding-bottom:18px}
+h1{font:400 64px/.85 "Bebas Neue";letter-spacing:.01em}
+h1 span{color:var(--blue)}
+.role{font-weight:700;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);margin-top:8px}
+.contact{text-align:right;font-size:12.5px;color:var(--mut);line-height:1.7}
+.contact a{text-decoration:none;color:var(--ink);font-weight:700}
+h2{font:400 22px/1 "Bebas Neue";letter-spacing:.08em;color:var(--blue);margin:30px 0 10px}
+.job{display:grid;grid-template-columns:1fr auto;gap:2px 16px;margin-bottom:16px}
+.job b{font-size:14.5px}
+.job .when{font-size:12px;color:var(--mut);text-align:right}
+.job .co{grid-column:1/-1;font-size:13px;color:var(--mut)}
+.job ul{grid-column:1/-1;margin:6px 0 0 18px}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tags span{padding:5px 11px;border:1px solid rgba(0,0,0,.15);border-radius:999px;font-size:12px;font-weight:700}
+.fill{color:var(--blue);background:rgba(34,81,255,.08);border-radius:4px;padding:0 4px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:0 40px}
+@media (max-width:640px){.page{padding:36px 24px}header{flex-direction:column;align-items:flex-start}.contact{text-align:left}h1{font-size:52px}.two{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.bar a{transition:none}.bar a:hover{translate:none}}
+@media print{body{background:#fff}.bar{display:none}.page{box-shadow:none;margin:0;width:auto;padding:0}.fill{background:none}@page{size:A4;margin:16mm}}
+</style>
+</head>
+<body>
+<div class="bar"><a class="back" href="index.html">← Back to site</a><span style="display:flex;gap:8px;align-items:center"><a class="dl" href="cv.pdf" download="%%NAME%%-CV.pdf">⬇ Download PDF</a><button class="burger light" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mmenu"><i></i><i></i></button></span></div>
+<article class="page">
+  <header>
+    <div><h1>%%NAMEU%%<span>.</span></h1><div class="role">Graphic Designer</div></div>
+    <div class="contact">Nigeria<br/>WhatsApp: <a href="https://wa.me/2348025906665">+234 802 590 6665</a><br/>Instagram: <a href="https://www.instagram.com/_austi.nnn">@_austi.nnn</a><br/><a href="https://linktr.ee/austins_touch">linktr.ee/austins_touch</a></div>
+  </header>
+
+  <h2>Profile</h2>
+  <p>Graphic designer helping brands connect through engaging design. I create social media flyers and promos, party and event designs, food flyers, logos and brand identities — bold headline type, strong colour and a clear call to action.</p>
+
+  <h2>Experience</h2>
+  <div class="job"><b>Founder &amp; CEO</b><span class="when"><span class="fill">[Year]</span> – Present</span><span class="co">Touch Creative Agency</span>
+    <ul><li>Founded and runs a creative design agency.</li><li><span class="fill">[Add key results or services]</span></li></ul></div>
+  <div class="job"><b>Graphic Designer (Freelance)</b><span class="when"><span class="fill">[Year]</span> – Present</span><span class="co">Austin's Touch</span>
+    <ul><li>Designs social media flyers, promos and new-month posts for businesses, mainly gadget and phone stores.</li>
+      <li>Creates party, rave, tour and event flyers, plus food and restaurant flyers.</li>
+      <li>Designs logos, brand identities and multi-slide carousel posts.</li></ul></div>
+
+  <h2>Selected clients</h2>
+  <p>D Gadgets · DEL Tech &amp; Gadgets · Dera The Plug · MJ Luxe Denim · The Food Lab · FastVenda · Luxe Skyside Hotel · DJ BOIZ · The Bold Lens Podcast · Verified Charles Luggages · Favorite Closet · UNIZIK Student Union · Ocat Adventures UK</p>
+
+  <div class="two">
+    <div><h2>Skills</h2><div class="tags"><span>Social media flyers</span><span>Event &amp; party flyers</span><span>Logos</span><span>Brand identity</span><span>Carousels</span><span>3D headline type</span><span>Photo cut-outs</span></div></div>
+    <div><h2>Tools</h2><p><span class="fill">[Add tools — e.g. Photoshop, Illustrator, Canva]</span></p></div>
+  </div>
+
+  <h2>Education</h2>
+  <p><span class="fill">[Add school, course and years]</span></p>
+</article>
+%%MENU%%
+</body>
+</html>

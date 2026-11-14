@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>%%NAME%% — Graphic Designer</title>
+<meta name="description" content="%%NAME%% is a graphic designer in Nigeria — brand identity, logos, posters and social design."/>
+<style>
+@font-face{font-family:"Bebas Neue";src:url(data:font/woff2;base64,%%BEBAS%%) format("woff2");font-display:swap}
+@font-face{font-family:"Montserrat";font-weight:400;src:url(data:font/woff2;base64,%%M400%%) format("woff2");font-display:swap}
+@font-face{font-family:"Montserrat";font-weight:500;src:url(data:font/woff2;base64,%%M500%%) format("woff2");font-display:swap}
+@font-face{font-family:"Montserrat";font-weight:700;src:url(data:font/woff2;base64,%%M700%%) format("woff2");font-display:swap}
+:root{
+  --black:#050507;--black2:#0c0d12;--white:#ffffff;--paper:#f4f5f8;--blue:#2251ff;--blue2:#1638c9;--blueL:#7f9bff;--mut:#9a9cab;--mutD:#5b5d68;
+  --e-out:cubic-bezier(.22,1,.36,1);--e-in:cubic-bezier(.4,0,1,1);--e-inout:cubic-bezier(.45,0,.55,1);--e-sig:cubic-bezier(.34,1.56,.64,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--white);font:400 16px/1.6 "Montserrat",sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit}
+.disp{font-family:"Bebas Neue",sans-serif;font-weight:400;line-height:.88;letter-spacing:.005em}
+.kicker{font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--blue)}
+.grain{position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.06;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:12px}
+
+/* ---------- NAV ---------- */
+nav.top{position:fixed;top:18px;inset-inline:0;margin-inline:auto;width:fit-content;z-index:50;display:flex;align-items:center;gap:4px;padding:7px;border-radius:999px;
+  background:rgba(10,10,14,.6);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 18px 40px -20px rgba(0,0,0,.7);overflow:hidden}
+nav.top::before{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;background:radial-gradient(160px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.08),transparent 70%)}
+.logo{width:38px;height:38px;border-radius:13px;background:var(--white);color:var(--black);display:grid;place-items:center;font:400 26px/1 "Bebas Neue";box-shadow:0 6px 14px rgba(0,0,0,.4);transition:transform .45s var(--e-out);margin-right:6px}
+.logo:hover{transform:rotate(-6deg) scale(1.05)}
+nav.top a.l{position:relative;display:flex;align-items:center;gap:7px;padding:10px 14px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#d9dae2;border:1px solid transparent;transition:.4s var(--e-out);overflow:hidden}
+nav.top a.l svg{width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2}
+nav.top a.l:hover{background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.03));border-color:rgba(255,255,255,.14);translate:0 -1px;box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 8px 18px -8px rgba(0,0,0,.6);color:#fff}
+nav.top a.l::after{content:"";position:absolute;inset:0;background:radial-gradient(80px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.14),transparent 70%);opacity:0;transition:opacity .3s}
+nav.top a.l:hover::after{opacity:1}
+nav.top a.l.active{background:var(--white);color:var(--black);box-shadow:0 6px 16px rgba(0,0,0,.4)}
+nav.top a.l.active::after{display:none}
+nav.top .cta{margin-left:6px}
+
+/* ---------- BUTTONS ---------- */
+.cta{position:relative;display:inline-flex;align-items:center;gap:10px;padding:17px 28px;border-radius:999px;border:0;cursor:pointer;font-weight:700;font-size:14.5px;letter-spacing:.02em;color:#fff;overflow:hidden;isolation:isolate;
+  background:linear-gradient(180deg,rgba(255,255,255,.2),transparent 42%,rgba(0,0,0,.25)),var(--blue);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.28),0 12px 34px -10px rgba(34,81,255,.8);transition:translate .45s var(--e-out),box-shadow .45s var(--e-out),scale .2s var(--e-out)}
+.cta.small{padding:11px 18px;font-size:12px}
+.cta>*{position:relative;z-index:2}
+.cta::before{content:"";position:absolute;top:-20%;bottom:-20%;width:42%;left:-45%;rotate:14deg;z-index:1;background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);filter:blur(5px);animation:sheen 5.5s linear infinite}
+@keyframes sheen{0%,55%{left:-45%}85%,100%{left:115%}}
+.cta::after{content:"";position:absolute;inset:0;z-index:1;opacity:0;transition:opacity .4s var(--e-out);
+  background:radial-gradient(120px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.35),transparent 70%),radial-gradient(115% 95% at 50% 132%,rgba(150,175,255,.95),transparent 58%)}
+.cta:hover{translate:0 -2px;box-shadow:inset 0 1px 0 rgba(255,255,255,.3),inset 0 -12px 26px -14px rgba(160,185,255,.95),0 14px 38px -8px rgba(34,81,255,.95)}
+.cta:hover::after{opacity:1}
+.cta:active{scale:.97}
+.ghostbtn{display:inline-flex;align-items:center;gap:10px;padding:16px 22px;border-radius:999px;font-weight:700;font-size:14px;border:1px solid rgba(255,255,255,.2);background:rgba(10,10,14,.6);backdrop-filter:blur(8px);transition:.45s var(--e-out)}
+.ghostbtn:hover{background:rgba(255,255,255,.1);translate:0 -2px;border-color:rgba(255,255,255,.35)}
+.ghostbtn i{font-style:normal;display:inline-block;transition:translate .45s var(--e-out)}
+.ghostbtn:hover i{translate:0 3px}
+.ext{display:inline-flex;min-height:32px;align-items:center;gap:8px;font-weight:700;font-size:13px;border-bottom:1px solid currentColor;padding-bottom:2px;transition:color .3s var(--e-out),gap .4s var(--e-out)}
+.ext:hover{color:var(--blue);gap:12px}
+
+/* ---------- HERO ---------- */
+.hero-wrap{position:relative;height:200vh;height:200svh}
+.hero{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;transform-origin:50% 0}
+.atmo{position:absolute;inset:0;z-index:0;background:
+  radial-gradient(42% 52% at 50% 58%,rgba(34,81,255,.42),transparent 70%),
+  radial-gradient(70% 40% at 50% 108%,rgba(34,81,255,.35),transparent 70%),
+  linear-gradient(180deg,#030304,#07080e 55%,#050507)}
+.hi-line{position:absolute;z-index:0;left:0;right:0;top:15vh;text-align:center;font-size:13px;font-weight:700;letter-spacing:.5em;text-transform:uppercase;color:var(--blueL)}
+.name{position:absolute;z-index:0;left:0;right:0;top:calc(15vh + 26px);text-align:center;font:400 min(31vw,52vh)/.8 "Bebas Neue";letter-spacing:.01em;color:var(--white);white-space:nowrap;user-select:none}
+.name span{display:inline-block}
+#avFallback{position:absolute;z-index:1;opacity:0;left:0;right:0;bottom:0;margin-inline:auto;height:74vh;max-width:92vw;object-fit:contain;object-position:bottom;transition:opacity .4s}
+#avFallback.show{opacity:1}
+#avFallback.gone{opacity:0!important;pointer-events:none}
+#heroGL{position:absolute;inset:0;z-index:1;width:100%;height:100%;display:block}
+.vignette{position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(120% 95% at 50% 45%,transparent 55%,rgba(0,0,0,.85) 100%)}
+.corner{position:absolute;z-index:3;bottom:clamp(26px,5vh,50px)}
+.corner.l{left:5vw;max-width:330px}
+.corner.r{right:5vw;text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:16px}
+.role{font:400 30px/1 "Bebas Neue";letter-spacing:.06em}
+.role b{color:var(--blue);font-weight:400}
+.desc{margin-top:10px;font-size:14.5px;line-height:1.6;color:#c6c8d2}
+.corner .row{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+.corner .owner{font-size:12.5px;color:var(--mut)}
+.corner .owner a{color:#fff}
+.tip{position:absolute;z-index:3;top:calc(15vh + 26px + min(31vw,52vh)*.8 + 18px);left:0;right:0;margin-inline:auto;width:fit-content;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#cfd2dc;
+  padding:9px 15px;border-radius:999px;background:rgba(10,10,14,.55);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(8px);display:none}
+.bubble{position:fixed;left:0;top:0;z-index:4;pointer-events:none;background:#fff;color:#050507;font-weight:700;font-size:14px;padding:11px 16px;border-radius:18px 18px 18px 4px;white-space:nowrap;box-shadow:0 14px 30px -10px rgba(0,0,0,.5);opacity:0;scale:.6;transform-origin:0 100%;transition:opacity .3s var(--e-out),scale .45s var(--e-sig)}
+.bubble.on{opacity:1;scale:1}
+.enter{opacity:0;translate:0 26px;transition:opacity .9s var(--e-out),translate .9s var(--e-out)}
+body.ready .enter{opacity:1;translate:0 0}
+.d1{transition-delay:.05s}.d2{transition-delay:.15s}.d3{transition-delay:.3s}.d4{transition-delay:.45s}
+body.settled .enter{transition-delay:0s}
+body.still .enter{transition:none;opacity:1;translate:0 0}
+body.still .cta::before,body.still .marquee .track{animation:none}
+.name .enter{translate:0 40%}
+
+/* ---------- ABOUT (white) + lanyard ---------- */
+section.sheet{position:relative;z-index:5;margin-top:-100vh;margin-top:-100svh;border-radius:34px 34px 0 0;box-shadow:0 -30px 80px rgba(0,0,0,.6)}
+#about{background:var(--paper);color:var(--black);min-height:100vh;display:grid;grid-template-columns:1.05fr 1fr;overflow:hidden}
+#about .left{padding:130px 0 90px 6vw;position:relative;z-index:2}
+#about h2{font-size:clamp(64px,8vw,140px);margin-top:12px}
+#about h2 em{font-style:normal;color:var(--blue)}
+#about .lead{margin-top:24px;font-size:22px;line-height:1.7;color:#30323b;max-width:520px}
+#about .lead b{color:var(--black)}
+.facts{margin-top:34px;display:grid;grid-template-columns:repeat(3,auto);gap:12px;justify-content:start}
+.fact{padding:14px 18px;border-radius:12px;background:#fff;border:1px solid rgba(0,0,0,.07);box-shadow:0 10px 24px -18px rgba(0,0,0,.35)}
+.fact small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#6b6d78}
+.fact b{font:400 24px/1.1 "Bebas Neue";letter-spacing:.03em}
+.agency{margin-top:34px;display:flex;align-items:center;gap:16px;padding:16px 18px;border-radius:24px;background:var(--black);color:#fff;max-width:520px;transition:translate .45s var(--e-out),box-shadow .45s var(--e-out)}
+.agency:hover{translate:0 -3px;box-shadow:0 18px 34px -16px rgba(34,81,255,.7)}
+.agency .mk{width:44px;height:44px;border-radius:12px;background:var(--blue);display:grid;place-items:center;font:400 24px/1 "Bebas Neue";flex:none}
+.agency small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--mut)}
+.agency b{font-size:15px}
+.cvbtn{margin-top:12px;display:flex;align-items:center;gap:14px;max-width:520px;padding:16px 18px;border-radius:24px;border:2px solid var(--black);font-weight:700;transition:background .4s var(--e-out),color .4s,translate .4s var(--e-out)}
+.cvbtn span{font-size:20px}.cvbtn b{font:400 24px/1 "Bebas Neue";letter-spacing:.04em}.cvbtn i{margin-left:auto;font-style:normal;font-size:13px}
+.cvbtn:hover{background:var(--black);color:#fff;translate:0 -3px}
+.agency .go{margin-left:auto;font-size:18px;transition:translate .45s var(--e-out)}
+.agency:hover .go{translate:4px -4px}
+#badgeGL{position:absolute;right:0;top:0;width:50%;height:100%;display:block;touch-action:pan-y;cursor:grab}
+#badgeGL.grabbing{cursor:grabbing}
+.badgehint{position:absolute;right:4vw;bottom:34px;z-index:2;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#4a4c56;padding:10px 16px;border-radius:999px;background:rgba(255,255,255,.75);border:1px solid rgba(0,0,0,.08);backdrop-filter:blur(8px)}
+
+/* ---------- WORK dome ---------- */
+.marquee{overflow:hidden;background:var(--blue);padding:20px 0;position:relative;z-index:5}
+.marquee .track{display:flex;width:max-content;animation:mq 26s linear infinite}
+.marquee span{font:400 40px/1 "Bebas Neue";letter-spacing:.04em;padding-right:40px;color:#fff;white-space:nowrap}
+.marquee span b{font-weight:400;padding-right:40px;color:var(--black)}
+@keyframes mq{to{transform:translateX(-50%)}}
+#work{height:100vh;position:relative;overflow:hidden;background:var(--black);z-index:5}
+#domeGL{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:grab;touch-action:pan-y}
+#domeGL.grabbing{cursor:grabbing}
+#work .vig{position:absolute;inset:0;pointer-events:none;background:radial-gradient(110% 90% at 50% 50%,transparent 50%,rgba(5,5,7,.95) 96%)}
+#work .scrim{position:absolute;inset:0 0 auto 0;height:50%;pointer-events:none;background:radial-gradient(70% 90% at 12% 18%,rgba(5,5,7,.92),rgba(5,5,7,.5) 45%,transparent 75%)}
+#work .head{position:absolute;left:6vw;top:96px;z-index:2;pointer-events:none}
+#work h2{font-size:clamp(54px,7vw,110px);margin-top:10px}
+#work .hint{position:absolute;bottom:30px;inset-inline:0;margin-inline:auto;width:fit-content;z-index:2;pointer-events:none;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#dcdde6;padding:10px 16px;border-radius:999px;background:rgba(14,14,20,.65);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.1);transition:opacity .4s var(--e-out)}
+#work .hint .short{display:none}
+.caption{position:absolute;left:0;right:0;margin-inline:auto;width:fit-content;bottom:8vh;z-index:3;display:flex;gap:16px;align-items:center;padding:12px 12px 12px 22px;border-radius:999px;background:rgba(255,255,255,.94);color:#111;box-shadow:0 16px 40px -14px rgba(0,0,0,.5);opacity:0;visibility:hidden;translate:0 12px;transition:opacity .45s var(--e-out),translate .45s var(--e-out),visibility .45s}
+#work.focused .caption{opacity:1;visibility:visible;translate:0 0}
+#work.focused .hint{opacity:0}
+.caption .t{font-weight:700;font-size:15px}.caption .s{font-size:12.5px;color:#55575f}
+.caption .capgo{border-radius:999px;background:var(--blue);color:#fff;padding:12px 18px;font-weight:700;font-size:12.5px;transition:scale .3s var(--e-out)}.caption .capgo:hover{scale:1.05}
+#work .explore{position:absolute;right:5vw;top:110px;z-index:3}
+#work.focused .explore{opacity:0;pointer-events:none}
+.caption button{border:0;border-radius:999px;background:#111;color:#fff;padding:12px 18px;font-weight:700;font-size:12.5px;cursor:pointer;transition:scale .3s var(--e-out)}
+.caption button:hover{scale:1.05}
+
+/* ---------- CLIENTS (moving belts) ---------- */
+#clients{position:relative;z-index:5;background:var(--white);color:var(--black);padding:90px 0 100px;overflow:hidden}
+#clients .kicker{padding:0 6vw}
+.belt{display:flex;width:max-content;gap:14px;margin-top:22px;animation:belt 38s linear infinite}
+.belt.rev{animation-direction:reverse;animation-duration:44s}
+#clients:hover .belt{animation-play-state:paused}
+@keyframes belt{to{transform:translateX(-50%)}}
+.chip{display:inline-flex;align-items:center;gap:14px;padding:16px 28px 16px 16px;border-radius:999px;border:1.5px solid rgba(5,5,7,.12);background:var(--paper);
+  font:400 clamp(28px,3.2vw,46px)/1 "Bebas Neue";letter-spacing:.02em;white-space:nowrap;transition:background .35s var(--e-out),color .35s var(--e-out),translate .35s var(--e-out),border-color .35s}
+.chip i{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--black);color:#fff;font:400 22px/1 "Bebas Neue";font-style:normal;flex:none}
+a.chip:hover{background:var(--blue);color:#fff;border-color:var(--blue);translate:0 -4px}
+a.chip:hover i{background:#fff;color:var(--blue)}
+.chip small{font:700 10.5px/1 Montserrat;letter-spacing:.14em;opacity:.55;margin-left:4px}
+body.still .belt{animation:none}
+@media (prefers-reduced-motion:reduce){.belt{animation:none}}
+/* ---------- SERVICES ---------- */
+#services{padding:100px 6vw 90px;background:var(--black2);position:relative;z-index:5}
+.svc-head{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap;margin-bottom:50px}
+.svc-head h2{font-size:clamp(54px,7vw,110px);margin-top:10px}
+.svc-head p{max-width:380px;color:var(--mut)}
+.svc{border-top:1px solid rgba(255,255,255,.1);display:grid;grid-template-columns:150px 1fr 1.1fr 40px;gap:24px;align-items:center;padding:30px 0;position:relative;isolation:isolate}
+.svc:last-child{border-bottom:1px solid rgba(255,255,255,.1)}
+.svc .n{font:400 92px/.8 "Bebas Neue";color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.35);transition:color .5s var(--e-out),-webkit-text-stroke-color .5s}
+.svc h3{font:400 44px/1 "Bebas Neue";letter-spacing:.02em;transition:translate .5s var(--e-out)}
+.svc p{color:var(--mut);font-size:15px;max-width:440px}
+.svc .arr{width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.2);display:grid;place-items:center;transition:.5s var(--e-out)}
+.svc::before{content:"";position:absolute;left:0;right:0;top:0;height:0;background:linear-gradient(90deg,rgba(34,81,255,.32),rgba(34,81,255,.04));z-index:-1;transition:height .5s var(--e-out)}
+.svc:hover::before{height:100%}
+.svc:hover .n{color:var(--blue);-webkit-text-stroke-color:var(--blue)}
+.svc:hover h3{translate:12px 0}
+.svc:hover .arr{background:#fff;color:#111;rotate:-45deg}
+
+/* service tiles (no images) */
+.stiles{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.stile{position:relative;display:flex;flex-direction:column;gap:18px;padding:24px 22px;border-radius:22px;background:linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.1);overflow:hidden;isolation:isolate;transition:translate .5s var(--e-out),border-color .4s}
+.stile::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(120% 90% at 100% 0%,rgba(34,81,255,.55),transparent 60%);opacity:0;transition:opacity .5s}
+.stile:hover{translate:0 -6px;border-color:rgba(34,81,255,.7)}
+.stile:hover::before{opacity:1}
+.stile .sn{position:absolute;right:18px;top:12px;font:400 54px/1 "Bebas Neue";color:transparent;-webkit-text-stroke:1.2px rgba(255,255,255,.25)}
+.stile svg{width:42px;height:42px;stroke:var(--blue);stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:stroke .4s,rotate .6s var(--e-sig)}
+.stile:hover svg{stroke:#fff;rotate:-8deg}
+.stile b{font:400 30px/1 "Bebas Neue";letter-spacing:.02em}
+.stile i{font-style:normal;position:absolute;right:20px;bottom:20px;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.08);transition:background .4s,rotate .4s var(--e-out)}
+.stile:hover i{background:#fff;color:#111;rotate:-45deg}
+/* service cards */
+.scards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.scard{perspective:900px;display:block}
+.scard .si{position:relative;aspect-ratio:3/4;border-radius:22px;overflow:hidden;background:#111;transition:transform .55s var(--e-out),box-shadow .55s var(--e-out);box-shadow:0 24px 50px -30px rgba(0,0,0,.9)}
+.scard img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:scale .9s var(--e-out),filter .6s}
+.scard .si::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,5,7,.1) 30%,rgba(5,5,7,.9));transition:opacity .5s}
+.scard .sn{position:absolute;left:18px;top:16px;z-index:2;font:400 64px/.8 "Bebas Neue";color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.75)}
+.scard .st{position:absolute;left:18px;right:18px;bottom:18px;z-index:2;display:flex;justify-content:space-between;align-items:end}
+.scard .st b{font:400 36px/.9 "Bebas Neue";letter-spacing:.02em}
+.scard .st i{font-style:normal;width:42px;height:42px;border-radius:50%;background:var(--blue);display:grid;place-items:center;transition:rotate .5s var(--e-out),background .4s}
+.scard:hover .si{box-shadow:0 34px 70px -28px rgba(34,81,255,.7)}
+.scard:hover img{scale:1.07}
+.scard:hover .st i{rotate:-45deg;background:#fff;color:#111}
+/* ---------- CONTACT (3D monogram) ---------- */
+#contact{position:relative;z-index:5;background:var(--black);min-height:100vh;display:grid;grid-template-columns:1fr 1fr;overflow:hidden;border-top:1px solid rgba(255,255,255,.06)}
+#contact .atmo2{position:absolute;inset:0;background:radial-gradient(40% 55% at 75% 50%,rgba(34,81,255,.35),transparent 70%)}
+#contact .left{padding:120px 0 80px 6vw;position:relative;z-index:2}
+#contact h2{font-size:clamp(64px,8vw,140px);margin-top:12px}
+#contact h2 em{font-style:normal;color:var(--blue)}
+#contact .lead{margin-top:20px;font-size:16px;max-width:420px;color:#c6c8d2}
+.contacts{margin-top:34px;display:grid;gap:10px;max-width:440px}
+.contacts .c{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;border-radius:20px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);transition:.45s var(--e-out)}
+.contacts .c:hover{translate:0 -3px;background:rgba(255,255,255,.08)}
+.contacts .pair{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.contacts a.c span{font-size:18px;transition:translate .45s var(--e-out)}.contacts a.c:hover span{translate:3px -3px}
+.contacts .c small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--mut)}
+.contacts .c b{font-size:15px}
+.contacts button{border:0;background:#fff;color:#111;border-radius:999px;padding:9px 14px;font-size:12px;font-weight:700;cursor:pointer;transition:scale .3s var(--e-out)}
+.contacts button:hover{scale:1.06}
+#contact .crow{margin-top:34px;display:flex;gap:12px;flex-wrap:wrap}
+#monoGL{position:absolute;right:0;top:0;width:55%;height:100%;display:block}
+
+footer{position:relative;z-index:5;background:var(--white);color:var(--black);padding:30px 5vw 30px;overflow:hidden}
+footer .big{font:400 33vw/.78 "Bebas Neue";letter-spacing:-.005em;text-align:center;white-space:nowrap}
+footer .big span{color:var(--blue)}
+footer .fine{display:flex;justify-content:space-between;font-size:12.5px;color:#55575f;margin-top:16px;flex-wrap:wrap;gap:10px}
+footer .fine a{color:var(--black);font-weight:700}
+.toast{position:fixed;left:0;right:0;margin-inline:auto;width:fit-content;bottom:26px;z-index:70;background:#fff;color:#111;padding:12px 18px;border-radius:999px;font-size:13px;font-weight:600;opacity:0;visibility:hidden;translate:0 10px;transition:opacity .35s var(--e-out),translate .35s var(--e-out),visibility .35s}
+.toast.on{opacity:1;visibility:visible;translate:0 0}
+
+/* ---------- EXPLORE PAGES ---------- */
+#pages{position:fixed;inset:0;z-index:40;background:var(--black);overflow-y:auto;overscroll-behavior:contain;opacity:0;visibility:hidden;translate:0 30px;transition:opacity .5s var(--e-out),translate .5s var(--e-out),visibility .5s}
+body.paged #pages{opacity:1;visibility:visible;translate:0 0}
+body.paged{overflow:hidden}
+.pg{display:none;padding:120px 5vw 100px;min-height:100%}
+.pg.on{display:block}
+.pg .top{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
+.pg h1{font-size:clamp(70px,10vw,170px)}
+.pg h1 em{font-style:normal;color:var(--blue)}
+.backlink{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:13px;padding:12px 18px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.04);transition:.4s var(--e-out);margin-bottom:28px}
+.backlink:hover{background:#fff;color:#111;translate:-3px 0}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:34px 0 30px}
+.filters button{border:1px solid rgba(255,255,255,.16);background:transparent;border-radius:999px;padding:11px 18px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:.35s var(--e-out)}
+.filters button:hover{border-color:#fff}
+.filters button.on{background:var(--blue);border-color:var(--blue)}
+.grid{columns:4 260px;column-gap:18px}
+.tile{break-inside:avoid;margin:0 0 18px;display:block;perspective:900px}
+.tile .in{position:relative;border-radius:16px;overflow:hidden;background:#111;transform-style:preserve-3d;transition:transform .5s var(--e-out),box-shadow .5s var(--e-out);box-shadow:0 20px 40px -24px rgba(0,0,0,.8)}
+.tile img{display:block;width:100%;height:auto;transition:scale .8s var(--e-out)}
+.tile .meta{position:absolute;left:10px;right:10px;bottom:10px;padding:12px 14px;border-radius:12px;background:rgba(5,5,7,.78);backdrop-filter:blur(10px);display:flex;justify-content:space-between;align-items:center;gap:10px;translate:0 8px;opacity:0;transition:.45s var(--e-out)}
+.tile .meta b{font:400 22px/1 "Bebas Neue";letter-spacing:.03em}.tile .meta small{display:block;font-size:11px;color:var(--mut);margin-top:3px}
+.tile .meta span{width:34px;height:34px;border-radius:50%;background:var(--blue);display:grid;place-items:center;flex:none}
+.tile:hover .in{box-shadow:0 34px 60px -24px rgba(34,81,255,.55)}
+.tile:hover img{scale:1.04}
+.tile:hover .meta{opacity:1;translate:0 0}
+.tile.hide{display:none}
+.brandhead{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:end;margin-bottom:46px}
+.brandhead .facts2{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+.brandhead .facts2 div{padding:14px 18px;border-radius:14px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04)}
+.brandhead .facts2 small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--mut)}
+.brandhead .facts2 b{font:400 24px/1.1 "Bebas Neue";letter-spacing:.03em}
+.bgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px;align-items:start}
+.bgrid .tile{margin:0}
+.bgrid .tile .meta{opacity:1;translate:0 0}
+.more{margin-top:70px;border-top:1px solid rgba(255,255,255,.1);padding-top:40px}
+.more .row2{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.more .row2 a{padding:12px 18px;border-radius:999px;border:1px solid rgba(255,255,255,.16);font:400 24px/1 "Bebas Neue";letter-spacing:.03em;transition:.35s var(--e-out)}
+.more .row2 a:hover{background:var(--blue);border-color:var(--blue);translate:0 -3px}
+.pgcta{margin-top:50px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+@media (max-width:740px){.pg{padding:96px 5vw 70px}.brandhead{grid-template-columns:1fr}.brandhead .facts2{justify-content:flex-start}.grid{columns:2 150px;column-gap:10px}.tile{margin-bottom:10px}.tile .meta{display:none}.bgrid{grid-template-columns:1fr}.bgrid .tile .meta{display:flex}}
+/* ---------- CARD TUNNEL ---------- */
+#tunnel{position:relative;z-index:5;height:220vh;background:#000}
+.tsticky{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+#tunnelGL{position:absolute;inset:0;width:100%;height:100%;display:block}
+.tcap{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
+.tcap span{grid-area:1/1;font:400 clamp(64px,11vw,190px)/.9 "Bebas Neue";letter-spacing:.01em;text-shadow:0 10px 60px rgba(0,0,0,.8);opacity:0;scale:.8;filter:blur(8px);transition:opacity .6s var(--e-out),scale .8s var(--e-out),filter .6s}
+.tcap span.on{opacity:1;scale:1;filter:none}
+.tcap em{font-style:normal;color:var(--blue)}
+.tbar{position:absolute;left:5vw;right:5vw;bottom:34px;height:2px;background:rgba(255,255,255,.12);border-radius:2px;overflow:hidden}
+.tbar i{display:block;height:100%;width:100%;background:var(--blue);transform-origin:0 50%;scale:0 1}
+/* ---------- INK REVEAL footer ---------- */
+.inkwrap{position:relative}
+#inkGL{display:block;width:100%;height:auto;cursor:crosshair}
+.srt{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.inkhint{position:absolute;right:0;top:0;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#77798a}
+@media (max-width:740px){}
+
+/* ---------- TABLET ---------- */
+@media (max-width:1180px) and (min-width:741px){
+  .stiles{grid-template-columns:repeat(2,1fr)}
+  #about,#contact{grid-template-columns:1fr}
+  #about .left,#contact .left{padding-right:6vw}
+  #badgeGL{position:relative;width:100%;height:80vh}
+  #monoGL{position:relative;width:100%;height:60vh}
+  .corner.l{max-width:260px}
+}
+/* ---------- PHONE ---------- */
+@media (max-width:740px){
+  nav.top{left:4%;right:4%;width:auto;margin:0;justify-content:space-between}
+  nav.top .cta{margin-left:auto;margin-right:8px}
+  nav.top a.l{display:none}
+  .hi-line{top:13vh;font-size:11px}
+  .name{top:calc(13vh + 22px);font-size:31vw}
+  .corner.l{display:none}
+  .corner.r{left:5vw;right:5vw;align-items:center;text-align:center}
+  .corner .row{justify-content:center}
+  .cta{padding:15px 22px}
+  .marquee span{font-size:30px}
+  #about{grid-template-columns:1fr}#about .left{padding:90px 6vw 10px}
+  .facts{grid-template-columns:1fr 1fr}
+  #badgeGL{position:relative;width:100%;height:78vh}
+  .badgehint{right:0;left:0;margin-inline:auto;width:fit-content}
+  #work .head{top:92px}
+  #work .hint .long{display:none}#work .hint .short{display:inline}
+  .stiles{grid-template-columns:repeat(2,1fr);gap:10px}.stile{padding:18px 16px}.stile b{font-size:24px}.stile .sn{font-size:40px}.scard .st b{font-size:26px}.scard .sn{font-size:44px}.scard .st i{width:34px;height:34px}
+  #services{padding:90px 6vw}
+  #contact{grid-template-columns:1fr}#contact .left{padding:80px 6vw 10px}
+  #monoGL{position:relative;width:100%;height:55vh}
+}
+@media (prefers-reduced-motion:reduce){.cta::before,.marquee .track{animation:none}}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+
+<nav class="top" id="nav">
+  <a class="logo" href="#top" aria-label="%%NAME%% — home">A</a>
+  <a class="l active" href="#top"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9H3z"/></svg>Home</a>
+  <a class="l" href="#about"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg>About</a>
+  <a class="l" href="#work"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>Work</a>
+  <a class="l" href="#services"><svg viewBox="0 0 24 24"><path d="M12 2l3 7 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg>Services</a>
+  <a class="l" href="work.html" data-page="1"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg>All work</a>
+  <a class="l" href="cv.html" data-page="1"><svg viewBox="0 0 24 24"><path d="M6 2h9l5 5v15H6z"/><path d="M14 2v6h6"/></svg>CV</a>
+  <a class="l" href="contact.html" data-page="1"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Contact</a>
+  <a class="cta small" href="contact.html"><span>Hire me</span></a>
+  <button class="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mmenu"><i></i><i></i></button>
+</nav>
+
+<div class="hero-wrap" id="top">
+ <div class="hero" id="hero">
+  <div class="atmo"></div>
+  <div class="hi-line enter d1">Hi, I'm</div>
+  <h1 class="name disp" aria-label="%%NAME%%">%%LETTERS%%</h1>
+  <img id="avFallback" src="%%AVATAR%%" alt="%%NAME%%, 3D avatar"/>
+  <canvas id="heroGL" aria-hidden="true"></canvas>
+  <div class="vignette"></div>
+  <div class="bubble" id="bubble" aria-live="polite"></div>
+  <div class="corner l enter d3">
+    <div class="role">Graphic <b>designer</b></div>
+    <p class="desc">Flyers, logos &amp; social designs that make people stop scrolling.</p>
+  </div>
+  <div class="corner r enter d4">
+    <div class="row">
+      <a class="cta" href="contact.html" id="heroCta"><span>Hire %%NAME%%</span><span>→</span></a>
+      <a class="ghostbtn" href="#work">See the work <i>↓</i></a>
+    </div>
+    <div class="owner">Also founder of <a class="ext" href="%%AGENCY_URL%%" target="_blank" rel="noopener">Touch Creative Agency ↗</a></div>
+  </div>
+ </div>
+</div>
+
+<section class="sheet" id="about">
+  <div class="left">
+    <div class="kicker">About</div>
+    <h2 class="disp">Meet<br/><em>%%NAME%%.</em></h2>
+    <p class="lead">Graphic designer in Nigeria. <b>Bold type, loud colour, zero boring.</b></p>
+    <div class="facts">
+      <div class="fact"><small>Based in</small><b>Nigeria</b></div>
+      <div class="fact"><small>Focus</small><b>Flyers &amp; brands</b></div>
+      <div class="fact"><small>Status</small><b>Open to work</b></div>
+    </div>
+    <a class="agency" href="%%AGENCY_URL%%" target="_blank" rel="noopener">
+      <div class="mk">T</div>
+      <div><small>Founder &amp; CEO</small><b>Touch Creative Agency</b></div>
+      <span class="go">↗</span>
+    </a>
+    <a class="cvbtn" href="cv.html"><span>📄</span><b>My CV</b><i>View →</i></a>
+  </div>
+  <canvas id="badgeGL" aria-label="%%NAME%%'s 3D badge on a lanyard — drag to swing, click to flip"></canvas>
+  <div class="badgehint">Grab it · Click to flip</div>
+</section>
+
+<section id="tunnel"><div class="tsticky"><canvas id="tunnelGL" aria-hidden="true"></canvas>
+  <div class="tcap"><span class="on">Flyers.</span><span>Party designs.</span><span>Logos.</span><span>All by <em>%%NAMEU%%.</em></span></div><div class="tbar"><i id="tbar"></i></div></div></section>
+<div class="marquee" aria-hidden="true"><div class="track">
+  <span>Social media flyers <b>✦</b> Event flyers <b>✦</b> Logos <b>✦</b> Brand identity <b>✦</b> Carousels <b>✦</b></span>
+  <span>Social media flyers <b>✦</b> Event flyers <b>✦</b> Logos <b>✦</b> Brand identity <b>✦</b> Carousels <b>✦</b></span>
+</div></div>
+<section id="work">
+  <canvas id="domeGL" aria-label="3D gallery of %%NAME%%'s designs — drag to spin, click a piece to look closer"></canvas>
+  <div class="vig"></div><div class="scrim"></div>
+  <div class="head"><div class="kicker">Selected work</div><h2 class="disp">The work.</h2></div>
+  <div class="hint">Drag to spin<span class="long"> · Click a design to look closer</span><span class="short"> · Tap a design</span></div>
+  <div class="caption"><div><div class="t" id="capT">Project</div><div class="s" id="capS">Brand identity</div></div><a class="capgo" id="capGo" href="work.html">View project →</a><button id="back">← Back</button></div>
+  <a class="cta explore" href="work.html"><span>Explore all work</span><span>→</span></a>
+</section>
+
+<section id="clients"><div class="kicker">Brands I've designed for</div><div class="belt" id="belt1"></div><div class="belt rev" id="belt2"></div></section>
+<section id="services">
+  <div class="svc-head">
+    <div><div class="kicker">What I do</div><h2 class="disp">Services.</h2></div>
+    <a class="ext" href="work.html">See all work ↗</a>
+  </div>
+  <div class="stiles"><a class="stile" href="work.html?c=flyer"><span class="sn">01</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h10l4 4v14H5z"/><path d="M8 12h8M8 16h5M8 8h4"/></svg><b>Social flyers</b><i>↗</i></a><a class="stile" href="work.html?c=party"><span class="sn">02</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l5-14 9 9z"/><path d="M14 4l1 2M19 7l2-1M17 3v2"/></svg><b>Party &amp; events</b><i>↗</i></a><a class="stile" href="work.html?c=logo"><span class="sn">03</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16"/></svg><b>Logos</b><i>↗</i></a><a class="stile" href="work.html?c=social"><span class="sn">04</span><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4"/><circle cx="12" cy="12" r="3.5"/><circle cx="17" cy="7" r="1"/></svg><b>Social media</b><i>↗</i></a></div>
+</section>
+
+
+<section id="contact">
+  <div class="atmo2"></div>
+  <div class="left">
+    <div class="kicker">Contact</div>
+    <h2 class="disp">Let's make<br/>something <em>bold.</em></h2>
+    <div class="crow"><a class="cta" href="contact.html"><span>Start a project</span><span>→</span></a><a class="ghostbtn" href="https://wa.me/2348025906665" target="_blank" rel="noopener">WhatsApp ↗</a></div>
+  </div>
+  <canvas id="monoGL" aria-hidden="true"></canvas>
+</section>
+<footer>
+  <div class="inkwrap"><canvas id="inkGL" aria-hidden="true"></canvas><h2 class="srt">%%NAMEU%%.</h2><span class="inkhint">Move to spill the ink</span></div>
+  <div class="fine"><span>© 2026 %%NAME%% · Graphic designer</span><span>Founder of <a href="%%AGENCY_URL%%" target="_blank" rel="noopener">Touch Creative Agency ↗</a></span></div>
+</footer>
+<div id="pages" aria-live="polite"><section class="pg" id="pg-gallery"></section><section class="pg" id="pg-brand"></section></div>
+<div class="toast" id="toast">Copied</div>
+
+<script>setTimeout(()=>document.body.classList.add("ready"),3000);setTimeout(()=>{const f=document.getElementById('avFallback');if(f&&!f.classList.contains('gone'))f.classList.add('show');},4000);</script>
+<script type="module">
+const qs=new URLSearchParams(location.search);
+const STILL=qs.has("still")||matchMedia("(prefers-reduced-motion: reduce)").matches;
+const body=document.body;if(STILL)body.classList.add("still","ready","settled");
+const isPhone=()=>innerWidth<=740;
+
+document.querySelectorAll(".cta, nav.top, nav.top a").forEach(el=>el.addEventListener("pointermove",e=>{const r=el.getBoundingClientRect();
+  el.style.setProperty("--mx",((e.clientX-r.left)/r.width*100)+"%");el.style.setProperty("--my",((e.clientY-r.top)/r.height*100)+"%");}));
+const links=[...document.querySelectorAll("nav.top a.l:not([data-page])")];const secs=["top","about","work","services"].map(id=>document.getElementById(id));
+addEventListener("scroll",()=>{let a=0;secs.forEach((s,i)=>{if(s.getBoundingClientRect().top<innerHeight*.45)a=i;});links.forEach((l,i)=>l.classList.toggle("active",i===a));},{passive:true});
+document.querySelectorAll('.scard').forEach(c=>{const el=c.querySelector('.si');c.addEventListener('pointermove',e=>{const r=el.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;el.style.transform=`rotateY(${x*14}deg) rotateX(${-y*14}deg) translateZ(16px)`;});c.addEventListener('pointerleave',()=>el.style.transform='');});
+const toast=document.getElementById("toast");
+document.querySelectorAll("[data-copy]").forEach(b=>b.addEventListener("click",async()=>{const v=document.getElementById(b.dataset.copy).textContent;
+  try{await navigator.clipboard.writeText(v);toast.textContent="Copied "+v;}catch{toast.textContent=v;}toast.classList.add("on");setTimeout(()=>toast.classList.remove("on"),1800);}));
+
+const ptr={x:0,y:0,nx:0,ny:0,has:false};
+addEventListener("pointermove",e=>{ptr.nx=e.clientX/innerWidth*2-1;ptr.ny=e.clientY/innerHeight*2-1;if(e.pointerType==="mouse")ptr.has=true;},{passive:true});
+let ctaHover=false;const hc0=document.getElementById("heroCta");hc0.addEventListener("pointerenter",()=>ctaHover=true);hc0.addEventListener("pointerleave",()=>ctaHover=false);
+
+let THREE;
+try{THREE=await import("./vendor/three.module.js");}
+catch{THREE=await import("https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js");}
+
+let seed=11;const rand=()=>{seed=(seed*16807)%2147483647;return (seed-1)/2147483646;};
+const COL={black:"#050507",white:"#ffffff",paper:"#f4f5f8",blue:"#2251ff",blue2:"#1638c9",blueL:"#7f9bff",grey:"#9a9cab"};
+function rr(x,a,b,w,h,r){x.beginPath();x.roundRect(a,b,w,h,r);}
+
+// shared studio environment (softboxes) so glossy objects actually reflect light
+function makeEnv(renderer){
+  const s=new THREE.Scene();s.add(new THREE.Mesh(new THREE.SphereGeometry(30,32,16),new THREE.MeshBasicMaterial({color:0x07080e,side:THREE.BackSide})));
+  const box=(w,h,x,y,z,c,i)=>{const m=new THREE.Mesh(new THREE.PlaneGeometry(w,h),new THREE.MeshBasicMaterial({color:new THREE.Color(c).multiplyScalar(i),side:THREE.DoubleSide}));m.position.set(x,y,z);m.lookAt(0,0,0);s.add(m);};
+  box(14,6,0,14,4,0xffffff,3);box(6,12,-14,2,6,0xffffff,2.2);box(6,12,15,0,2,0x6f8dff,2.4);box(20,3,0,-12,-8,0x2251ff,1.6);box(8,8,0,4,-16,0xffffff,1.2);
+  const pm=new THREE.PMREMGenerator(renderer);const t=pm.fromScene(s,.04).texture;pm.dispose();return t;}
+function shinyMats(){return{
+  blue:new THREE.MeshPhysicalMaterial({color:0x2251ff,roughness:.18,metalness:.15,clearcoat:1,clearcoatRoughness:.08}),
+  white:new THREE.MeshPhysicalMaterial({color:0xf2f4fa,roughness:.32,metalness:0,clearcoat:1,clearcoatRoughness:.15}),
+  black:new THREE.MeshPhysicalMaterial({color:0x0b0b10,roughness:.22,metalness:.2,clearcoat:1,clearcoatRoughness:.05}),
+  chrome:new THREE.MeshStandardMaterial({color:0xffffff,roughness:.08,metalness:1})};}
+const extrude=(shape,depth,bev)=>{const g=new THREE.ExtrudeGeometry(shape,{depth,bevelEnabled:true,bevelThickness:bev,bevelSize:bev,bevelSegments:6,curveSegments:24});g.center();return g;};
+
+// ================= HERO =================
+const hcv=document.getElementById("heroGL"),hero=document.getElementById("hero");
+const hr=new THREE.WebGLRenderer({canvas:hcv,antialias:true,alpha:true});hr.setPixelRatio(Math.min(devicePixelRatio,2));
+hr.toneMapping=THREE.ACESFilmicToneMapping;hr.outputColorSpace=THREE.SRGBColorSpace;
+const hs=new THREE.Scene();hs.environment=makeEnv(hr);hs.environmentIntensity=1.35;
+const hcam=new THREE.PerspectiveCamera(35,1,.1,100);hcam.position.set(0,0,10);
+const key=new THREE.DirectionalLight(0xffffff,1.4);key.position.set(-3,5,6);hs.add(key);
+const M=shinyMats();
+// avatar as a plane IN the 3D scene, so objects can pass in front of and behind him
+const avTex=await new THREE.TextureLoader().loadAsync("%%AVATAR%%");avTex.colorSpace=THREE.NoColorSpace;avTex.anisotropy=8;
+const TW=avTex.image.width,TH=avTex.image.height,avAspect=TW/TH;
+const avatar=new THREE.Group();hs.add(avatar);
+// "puppet" shader: bends his face/body and moves his real irises inside the eye whites
+const AU={map:{value:avTex},uLook:{value:new THREE.Vector2()},uTilt:{value:0},uBrow:{value:0},uSmile:{value:0},uBlink:{value:0},uLow:{value:0},
+  uSquash:{value:0},uBreath:{value:0},uOpacity:{value:0},uTex:{value:new THREE.Vector2(TW,TH)}};
+const avMat=new THREE.ShaderMaterial({uniforms:AU,transparent:true,toneMapped:false,precision:"highp",vertexShader:`
+uniform vec2 uLook,uTex;uniform float uTilt,uBrow,uSmile,uSquash,uBreath;varying vec2 vUv;
+float g(vec2 p,vec2 c,float r){vec2 d=(p-c)/r;return exp(-dot(d,d));}
+void main(){vUv=uv;vec2 p=vec2(uv.x*uTex.x,(1.-uv.y)*uTex.y);vec2 q=p;
+  float hm=1.-smoothstep(600.,730.,p.y);                       // 1 = head, 0 = body
+  vec2 piv=vec2(632.,705.);vec2 r=p-piv;float a=uTilt*hm;q=piv+mat2(cos(a),sin(a),-sin(a),cos(a))*r;
+  q+=vec2(uLook.x*15.,uLook.y*8.)*hm;                         // head follows cursor
+  float fg=g(p,vec2(632.,420.),215.);q+=vec2(uLook.x*12.,uLook.y*7.)*fg*hm;   // face moves more than skull = 3D turn
+  float b=g(p,vec2(512.,238.),72.)+g(p,vec2(742.,236.),72.);q.y-=uBrow*16.*b; // eyebrows up
+  q.y-=uBrow*4.*(g(p,vec2(524.,300.),60.)+g(p,vec2(739.,298.),60.));            // eyes open a touch
+  float cl=g(p,vec2(548.,532.),58.),cr=g(p,vec2(712.,532.),58.);q.x+=uSmile*(cr-cl)*10.;q.y-=uSmile*(cl+cr)*8.; // smile wider
+  q.y-=uSmile*5.*(g(p,vec2(548.,455.),70.)+g(p,vec2(716.,455.),70.));          // cheeks lift
+  q.y-=(1.-hm)*uBreath*(1266.-p.y)*.006;                                       // breathing (body)
+  q.y=uTex.y-(uTex.y-q.y)*(1.+uSquash);q.x=632.+(q.x-632.)*(1.-uSquash*.45);  // bounce squash
+  vec3 pos=vec3((q.x/uTex.x-.5)*(uTex.x/uTex.y),.5-q.y/uTex.y,0.);
+  gl_Position=projectionMatrix*modelViewMatrix*vec4(pos,1.);}`,
+fragmentShader:`
+uniform sampler2D map;uniform vec2 uLook,uTex;uniform float uBlink,uLow,uOpacity;varying vec2 vUv;
+vec2 U(vec2 p){return vec2(p.x/uTex.x,1.-p.y/uTex.y);}
+vec3 eye(vec3 col,vec2 p,vec2 C,vec2 R,vec2 I){
+  vec2 q=(p-C)/(R-1.5);float e=dot(q,q);if(e>=1.)return col;
+  float t=(p.y-(C.y-R.y))/(2.*R.y);
+  float yy=(p.y-C.y)/R.y;float hw=R.x*sqrt(max(0.,1.-yy*yy))*.86;
+  vec3 sl=texture2D(map,U(vec2(C.x-hw,p.y))).rgb,sr=texture2D(map,U(vec2(C.x+hw,p.y))).rgb;
+  vec3 synth=mix(sl,sr,clamp((p.x-(C.x-hw))/(2.*hw+.001),0.,1.));
+  float od=length(p-I);vec3 scl=mix(synth,col,smoothstep(27.,33.,od));        // keep his real eye white where we can
+  vec2 off=uLook*vec2(16.,6.);float id=length(p-(I+off));vec3 c=scl;
+  if(id<27.){vec3 ir=texture2D(map,U(p-off)).rgb;c=mix(ir,scl,smoothstep(25.5,27.,id));}
+  float lowY=C.y+R.y-uLow*R.y*.8;vec3 low=texture2D(map,U(vec2(p.x,C.y+R.y+11.))).rgb;
+  c=mix(c,low,smoothstep(lowY-1.5,lowY+1.5,p.y));
+  vec3 outc=mix(col,c,smoothstep(1.,.82,e));
+  return outc;}
+vec3 lids(vec3 col,vec2 p,vec2 C,vec2 R){
+  if(uBlink<.02)return col;vec2 q=(p-C)/(R+10.);float e=dot(q,q);if(e>=1.)return col;
+  float nx=(p.x-C.x)/R.x;
+  float lidY=C.y-R.y-9.+uBlink*(1.6*R.y+9.)+uBlink*R.y*.3*(1.-nx*nx);
+  float sx=C.x+nx*R.x*.9;vec3 top=vec3(0.),bot=vec3(0.);
+  for(int i=-2;i<=2;i++){float o=float(i)*7.;top+=texture2D(map,U(vec2(sx+o,C.y-R.y-18.))).rgb;bot+=texture2D(map,U(vec2(sx+o,C.y+R.y+14.))).rgb;}
+  top/=5.;bot/=5.;
+  float k=clamp((p.y-(C.y-R.y-9.))/(2.*R.y+18.),0.,1.);vec3 lid=mix(top,bot,smoothstep(.1,.95,k))*mix(1.04,.86,k);
+  vec3 c=mix(col,lid,max(smoothstep(lidY+1.5,lidY-1.5,p.y),smoothstep(.8,1.,uBlink)));
+  c=mix(c,vec3(.07,.045,.035),(1.-smoothstep(0.,3.2,abs(p.y-lidY)))*.92*smoothstep(1.,.7,e));
+  return mix(col,c,smoothstep(1.,.86,e));}
+void main(){vec4 c=texture2D(map,vUv);if(c.a<.01)discard;vec2 p=vec2(vUv.x*uTex.x,(1.-vUv.y)*uTex.y);
+  c.rgb=eye(c.rgb,p,vec2(524.5,324.),vec2(46.5,32.),vec2(529.,325.));
+  c.rgb=eye(c.rgb,p,vec2(739.,324.),vec2(49.,33.),vec2(732.,324.));
+  c.rgb=lids(c.rgb,p,vec2(524.5,324.),vec2(46.5,32.));c.rgb=lids(c.rgb,p,vec2(739.,324.),vec2(49.,33.));
+  gl_FragColor=vec4(c.rgb,c.a*uOpacity);}`});
+const avMesh=new THREE.Mesh(new THREE.PlaneGeometry(avAspect,1,90,90),avMat);const TOUCH=matchMedia('(hover: none)').matches;
+const avTex2=avTex.clone();avTex2.colorSpace=THREE.SRGBColorSpace;avTex2.needsUpdate=true;
+const avPlain=new THREE.MeshBasicMaterial({map:avTex2,transparent:true,toneMapped:false,opacity:0});
+let avChecked=false,avOK=false,avTries=0,avFrames=0;const probePx=new Uint8Array(4);
+function avProbe(){if(avOK||AU.uOpacity.value<.95||!(AV_H>0))return;if(++avFrames<2)return;avFrames=0;
+  // where is his face on the canvas? read that pixel back from the GPU
+  const v=new THREE.Vector3(0,.12,0);avMesh.localToWorld(v);v.project(hcam);const gl=hr.getContext();
+  const W=gl.drawingBufferWidth,H=gl.drawingBufferHeight;const x=Math.round((v.x+1)/2*W),y=Math.round((v.y+1)/2*H);
+  let a=0;try{gl.readPixels(Math.max(0,Math.min(W-1,x)),Math.max(0,Math.min(H-1,y)),1,1,gl.RGBA,gl.UNSIGNED_BYTE,probePx);a=probePx[3];}catch(e){a=255;}
+  if(a>40){avOK=true;document.getElementById('avFallback').classList.add('gone');return;}
+  avTries++;if(avMesh.material!==avPlain){avMesh.material=avPlain;console.warn("avatar: switched to plain drawing");}
+  if(avTries>=3){avOK=true;avMesh.visible=false;console.warn("avatar: showing picture instead");}}
+hr.debug.onShaderError=(gl,prog,vs,fs)=>{console.warn("avatar shader failed, using plain avatar");avMesh.material=avPlain;};
+function avCheck(){if(avChecked)return;avChecked=true;try{const pr=hr.properties.get(avMat).currentProgram;if(pr&&pr.diagnostics&&pr.diagnostics.runnable===false)avMesh.material=avPlain;}catch(e){avMesh.material=avPlain;}}
+avatar.add(avMesh);
+const shadow=new THREE.Mesh(new THREE.CircleGeometry(.5,48),new THREE.MeshBasicMaterial({color:0x2251ff,transparent:true,opacity:.35,blending:THREE.AdditiveBlending,depthWrite:false}));
+// floating designer objects
+const cursorShape=new THREE.Shape();[[0,0],[0,-1.25],[.32,-.95],[.55,-1.45],[.75,-1.36],[.53,-.87],[.95,-.87]].forEach(([x,y],i)=>i?cursorShape.lineTo(x,y):cursorShape.moveTo(x,y));cursorShape.closePath();
+const nib=new THREE.Shape();nib.moveTo(0,.9);nib.bezierCurveTo(.42,.5,.55,.05,.4,-.55);nib.lineTo(-.4,-.55);nib.bezierCurveTo(-.55,.05,-.42,.5,0,.9);
+const hole=new THREE.Path();hole.absarc(0,-.05,.11,0,Math.PI*2,true);nib.holes.push(hole);
+const OBJ=[
+  {g:extrude(cursorShape,.22,.05),m:"blue",p:[-2.65,1.05,.9],s:.85,r:[.2,.4,-.3]},
+  {g:extrude(nib,.2,.05),m:"blue",p:[2.85,.35,1.2],s:.5,r:[.3,-.5,.4]},
+  {g:new THREE.TorusGeometry(.42,.15,32,96),m:"white",p:[2.35,1.85,-1.5],s:1,r:[.9,.3,0]},
+  {g:new THREE.SphereGeometry(.34,48,32),m:"blue",p:[-1.9,-1.5,1.8],s:1,r:[0,0,0]},
+  {g:new THREE.TorusKnotGeometry(.28,.09,160,24),m:"black",p:[-2.25,2.15,-1.6],s:1,r:[.4,.2,0]},
+  {g:new THREE.CapsuleGeometry(.16,.55,12,24),m:"white",p:[-3.4,-.35,-.6],s:1,r:[.4,0,.9]},
+  {g:new THREE.OctahedronGeometry(.32,0),m:"chrome",p:[3.3,-.95,-.4],s:1,r:[.3,.3,0]},
+  {g:new THREE.SphereGeometry(.16,32,24),m:"chrome",p:[1.55,-1.85,2.2],s:1,r:[0,0,0]},
+  {g:new THREE.TorusGeometry(.2,.07,24,64),m:"blue",p:[1.2,2.55,.4],s:1,r:[1.2,.4,0]},
+];
+const objs=OBJ.map((o,i)=>{const mesh=new THREE.Mesh(o.g,M[o.m]);mesh.position.set(...o.p);mesh.rotation.set(...o.r);mesh.userData={base:new THREE.Vector3(...o.p),s:o.s,ph:i*1.7,spin:(i%2?1:-1)*(.2+i*.03),hit:0};hs.add(mesh);return mesh;});
+// sparkle dust
+function sprite(){const c=document.createElement("canvas");c.width=c.height=64;const x=c.getContext("2d");const g=x.createRadialGradient(32,32,0,32,32,32);
+  g.addColorStop(0,"rgba(255,255,255,1)");g.addColorStop(.3,"rgba(255,255,255,.5)");g.addColorStop(1,"rgba(255,255,255,0)");x.fillStyle=g;x.fillRect(0,0,64,64);return new THREE.CanvasTexture(c);}
+const SPR=sprite();const DN=isPhone()?160:380;const dpos=new Float32Array(DN*3);for(let i=0;i<DN;i++){dpos[i*3]=(rand()-.5)*12;dpos[i*3+1]=(rand()-.5)*7;dpos[i*3+2]=(rand()-.5)*6-1;}
+const dg=new THREE.BufferGeometry();dg.setAttribute("position",new THREE.BufferAttribute(dpos,3));
+const dust=new THREE.Points(dg,new THREE.PointsMaterial({map:SPR,size:.06,color:0xaabbff,transparent:true,opacity:.7,depthWrite:false,blending:THREE.AdditiveBlending}));hs.add(dust);
+// layout per screen size
+let AV_H=4.6;
+function heroResize(){const r=hcv.getBoundingClientRect();if(r.width<2||r.height<2)return false;hr.setSize(r.width,r.height,false);hcam.aspect=r.width/r.height;hcam.updateProjectionMatrix();
+  const vh=2*10*Math.tan(17.5*Math.PI/180),vw=vh*hcam.aspect;
+  AV_H=vw<vh?Math.min(vh*.6,vw*1.3/avAspect):Math.min(vh*.74,vw*.9/avAspect);avMesh.scale.set(AV_H,AV_H,1);avatar.userData.y=-vh/2+AV_H/2;
+  const sx=Math.min(1,vw/8.5);objs.forEach(o=>{o.userData.sx=sx;});heroSized=true;return true;}
+let heroSized=false;
+heroSized=false;heroResize();
+new ResizeObserver(()=>heroResize()).observe(hcv);
+// click an object to make it spin
+const hray=new THREE.Raycaster(),hndc=new THREE.Vector2();
+hcv.style.pointerEvents="auto";
+hcv.addEventListener("click",e=>{const r=hcv.getBoundingClientRect();hndc.set((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1);hray.setFromCamera(hndc,hcam);
+  const h=hray.intersectObjects(objs)[0];if(h)h.object.userData.hit=1;});
+let heroVis=true;new IntersectionObserver(([e])=>heroVis=e.isIntersecting).observe(hero);
+// ---- his reactions ----
+const bubble=document.getElementById("bubble");let bubbleT=0;
+function say(txt,ms=1800){bubble.textContent=txt;bubble.classList.add("on");clearTimeout(bubbleT);bubbleT=setTimeout(()=>bubble.classList.remove("on"),ms);}
+const mood={look:new THREE.Vector2(),lookT:new THREE.Vector2(),brow:0,browT:0,smile:.15,smileT:.15,blink:0,nextBlink:1.6,squash:0,sqV:0,lastMove:0,idleLook:0,speed:0,near:false,saidIdle:false};
+let px0=null;
+addEventListener("pointermove",e=>{const now=performance.now()/1000;if(px0){const v=Math.hypot(e.clientX-px0[0],e.clientY-px0[1])/Math.max(.008,now-px0[2]);mood.speed=mood.speed*.8+v*.2;}
+  px0=[e.clientX,e.clientY,now];mood.lastMove=now;mood.saidIdle=false;},{passive:true});
+function touchLook(e){const t=e.touches&&e.touches[0];if(!t)return;ptr.nx=t.clientX/innerWidth*2-1;ptr.ny=t.clientY/innerHeight*2-1;ptr.has=true;
+  const now=performance.now()/1000;if(px0){const v=Math.hypot(t.clientX-px0[0],t.clientY-px0[1])/Math.max(.008,now-px0[2]);mood.speed=mood.speed*.8+v*.2;}
+  px0=[t.clientX,t.clientY,now];mood.lastMove=now;mood.saidIdle=false;}
+hero.addEventListener("touchstart",touchLook,{passive:true});hero.addEventListener("touchmove",touchLook,{passive:true});
+function headScreen(){const r=hcv.getBoundingClientRect();const fb=[r.left+r.width/2,r.top+r.height*.42];
+  hcam.updateMatrixWorld();avatar.updateMatrixWorld(true);const v=new THREE.Vector3(0,.18,0);avMesh.localToWorld(v);v.project(hcam);
+  const x=r.left+(v.x+1)/2*r.width,y=r.top+(1-v.y)/2*r.height;return (Number.isFinite(x)&&Number.isFinite(y))?[x,y]:fb;}
+hcv.addEventListener("click",e=>{const r=hcv.getBoundingClientRect();hndc.set((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1);hray.setFromCamera(hndc,hcam);
+  if(hray.intersectObject(avMesh)[0]){mood.sqV-=.09;mood.brow=1;mood.smile=1;mood.smileT=1;setTimeout(()=>mood.smileT=.15,1400);say(["Haha! That tickles.","Hey! I'm working here.","Okay, okay, hire me already.","You found me!"][Math.floor(Math.random()*4)]);}});
+hc0.addEventListener("pointerenter",()=>say("Let's work together!",2200));
+function reactions(t,dt){
+  const now=performance.now()/1000;const [hx,hy]=headScreen();
+  const mx=ptr.has?(ptr.nx+1)/2*innerWidth:hx,my=ptr.has?(ptr.ny+1)/2*innerHeight:hy;
+  const idle=!ptr.has||now-mood.lastMove>3;
+  if(STILL){mood.lookT.set(.35,-.1);}
+  else if(idle){if(t>mood.idleLook){mood.idleLook=t+1.2+Math.random()*1.6;mood.lookT.set((Math.random()-.5)*1.6,(Math.random()-.6)*.8);}
+    if(ptr.has&&now-mood.lastMove>9&&!mood.saidIdle){mood.saidIdle=true;say("Still there?",2000);}}
+  else{mood.lookT.set(Math.max(-1,Math.min(1,(mx-hx)/(innerWidth*.35))),Math.max(-1,Math.min(1,(my-hy)/(innerHeight*.4))));}
+  if(!(Number.isFinite(mood.lookT.x)&&Number.isFinite(mood.lookT.y)))mood.lookT.set(0,0);
+  mood.look.lerp(mood.lookT,STILL?1:.09);if(!(Number.isFinite(mood.look.x)&&Number.isFinite(mood.look.y)))mood.look.set(0,0);
+  if(!Number.isFinite(mood.squash+mood.sqV)){mood.squash=0;mood.sqV=0;}
+  // cursor close to his face = happy; very fast cursor = surprised
+  const d=Math.hypot(mx-hx,my-hy),near=ptr.has&&!idle&&d<innerHeight*.22;
+  if(near&&!mood.near&&!STILL){mood.browT=.7;setTimeout(()=>mood.browT=0,500);}mood.near=near;
+  mood.speed*=.92;if(mood.speed>2600&&!STILL){mood.browT=1;setTimeout(()=>mood.browT=0,700);}
+  mood.smileT=Math.max(mood.smileT>.9?mood.smileT:.15,ctaHover?1:near?.75:.15);
+  mood.brow+=(Math.max(mood.browT,ctaHover?.5:0)-mood.brow)*.12;mood.smile+=(mood.smileT-mood.smile)*.08;
+  if(!STILL&&t>mood.nextBlink){mood.blink=1;mood.nextBlink=t+2.2+Math.random()*3.2;if(Math.random()<.2)setTimeout(()=>mood.blink=1,260);}
+  mood.blink=Math.max(0,mood.blink-dt*7);
+  mood.sqV+=(-mood.squash)*.25;mood.sqV*=.78;mood.squash+=mood.sqV;
+  AU.uLook.value.copy(mood.look);AU.uTilt.value=-mood.look.x*.05+(ctaHover?-.04:0);AU.uBrow.value=mood.brow;AU.uSmile.value=mood.smile;
+  AU.uBlink.value=qs.has("blink")?+qs.get("blink"):Math.min(1,mood.blink*1.6);AU.uLow.value=mood.smile*.32;AU.uSquash.value=mood.squash;AU.uBreath.value=STILL?0:Math.sin(t*1.7)*.5+.5;
+  // bubble follows his head
+  bubble.style.translate=`${hx+innerWidth*.07}px ${hy-innerHeight*.2}px`;
+}
+let first=false;
+function heroFrame(t,dt){
+  const p=Math.min(1,Math.max(0,scrollY/innerHeight));hero.style.scale=String(1-p*.06);hero.style.filter=p>0?`brightness(${1-p*.6})`:"";
+  if(!heroSized&&!heroResize())return;
+  if(!heroVis||p>=.995)return;
+  const ox=ptr.has?ptr.nx:Math.sin(t*.25)*.4,oy=ptr.has?ptr.ny:Math.sin(t*.18)*.15;
+  // intro: avatar rises, objects pop in with the signature overshoot
+  const k=STILL?1:Math.min(1,Math.max(0,(t-.15)/1.1)),ke=1-Math.pow(1-k,3);
+  avatar.position.y=(avatar.userData.y||0)-(1-ke)*2.2+(STILL?0:Math.sin(t*1.1)*.04);
+  const lean=ctaHover?1.045:1;avatar.scale.lerp(new THREE.Vector3(lean,lean,1),.08);
+  if(!Number.isFinite(avatar.rotation.x+avatar.rotation.y))avatar.rotation.set(0,0,0);avatar.rotation.y+=((mood.look.x*.2)-avatar.rotation.y)*.06;avatar.rotation.x+=((mood.look.y*.07)-avatar.rotation.x)*.06;avatar.position.x=mood.look.x*.08;
+  AU.uOpacity.value=ke;avPlain.opacity=ke;reactions(t,dt);
+  objs.forEach((o,i)=>{const u=o.userData;const kk=STILL?1:Math.min(1,Math.max(0,(t-.5-i*.08)/.7));const ov=kk<1?1+2.7*Math.pow(kk-1,3)+1.7*Math.pow(kk-1,2):1;
+    const sc=u.s*u.sx*Math.max(0,ov);o.scale.setScalar(sc);
+    const ft=STILL?0:t;o.position.set(u.base.x*u.sx+Math.sin(ft*.6+u.ph)*.08,u.base.y*Math.max(.8,u.sx)+Math.sin(ft*.9+u.ph)*.14,u.base.z);
+    u.hit*=.96;o.rotation.y+=(u.spin*.4+u.hit*.6)*dt*(STILL?0:1)*2;o.rotation.x+=u.spin*.15*dt*(STILL?0:1);});
+  dust.rotation.y=STILL?0:t*.02;
+  hcam.position.x+=(ox*.55-hcam.position.x)*.05;hcam.position.y+=(-oy*.3-hcam.position.y)*.05;hcam.lookAt(0,0,0);
+  hr.render(hs,hcam);avCheck();avProbe();
+  if(!first){first=true;setTimeout(()=>{body.classList.add("ready");setTimeout(()=>body.classList.add("settled"),1600);},STILL?0:150);}
+}
+
+// ================= ABOUT: LANYARD BADGE =================
+const bc=document.getElementById("badgeGL"),about=document.getElementById("about");
+const br=new THREE.WebGLRenderer({canvas:bc,antialias:true,alpha:true});br.setPixelRatio(Math.min(devicePixelRatio,2));br.outputColorSpace=THREE.SRGBColorSpace;
+const bs=new THREE.Scene();const bcam=new THREE.PerspectiveCamera(30,1,.1,100);bcam.position.set(0,0,13);
+bs.add(new THREE.HemisphereLight(0xffffff,0xb0b4c8,2.2));const sun=new THREE.DirectionalLight(0xffffff,2.2);sun.position.set(-3,4,6);bs.add(sun);
+const avImg=await new Promise(r=>{const i=new Image();i.onload=()=>r(i);i.src="%%PHOTO%%";});
+function cardFace(back){
+  const W=640,H=920,c=document.createElement("canvas");c.width=W;c.height=H;const x=c.getContext("2d");rr(x,0,0,W,H,46);x.clip();
+  if(!back){
+    x.fillStyle="#fff";x.fillRect(0,0,W,H);x.fillStyle=COL.blue;x.fillRect(0,0,W,210);
+    x.fillStyle="rgba(0,0,0,.25)";rr(x,W/2-70,34,140,24,12);x.fill();
+    x.fillStyle="#fff";x.font='400 30px "Bebas Neue"';x.textAlign="left";x.fillText("PORTFOLIO PASS",52,150);x.textAlign="right";x.fillText("2026",W-52,150);
+    x.save();x.beginPath();x.arc(W/2,330,150,0,7);x.fillStyle=COL.black;x.fill();x.clip();
+    const s=300/(avImg.width*.6);x.drawImage(avImg,W/2-avImg.width*s/2,190,avImg.width*s,avImg.height*s);x.restore();
+    x.lineWidth=10;x.strokeStyle="#fff";x.beginPath();x.arc(W/2,330,154,0,7);x.stroke();
+    x.textAlign="center";x.fillStyle=COL.black;x.font='400 140px "Bebas Neue"';x.fillText("%%NAMEU%%",W/2,630);
+    x.font='700 24px Montserrat';x.fillStyle=COL.blue;x.fillText("GRAPHIC DESIGNER",W/2,676);
+    x.font='500 19px Montserrat';x.fillStyle="#666874";x.fillText("Brand identity · Logos · Posters",W/2,712);
+    for(let i=0;i<46;i++){x.fillStyle=COL.black;x.fillRect(110+i*9.3,768,1+((i*7)%5),70);}
+    x.fillStyle=COL.black;x.fillRect(0,H-22,W,22);
+  }else{
+    x.fillStyle=COL.black;x.fillRect(0,0,W,H);const g=x.createRadialGradient(W*.85,H*.05,0,W*.85,H*.05,W*.9);g.addColorStop(0,"rgba(34,81,255,.55)");g.addColorStop(1,"rgba(34,81,255,0)");x.fillStyle=g;x.fillRect(0,0,W,H);
+    x.fillStyle="rgba(255,255,255,.18)";rr(x,W/2-70,34,140,24,12);x.fill();
+    x.textAlign="left";x.fillStyle="#fff";x.font='400 96px "Bebas Neue"';x.fillText("LET'S TALK.",52,196);
+    [["WHATSAPP","+234 802 590 6665"],["INSTAGRAM","@_austi.nnn"],["ALL LINKS","linktr.ee/austins_touch"]].forEach(([k,v],i)=>{x.font='700 17px Montserrat';x.fillStyle=COL.blueL;x.fillText(k,52,272+i*92);x.font='500 28px Montserrat';x.fillStyle="#fff";x.fillText(v,52,308+i*92);});
+    const QR=[[1,1,1,1,1,1,1,0,0,0,1,1,1,0,1,0,0,1,1,1,0,0,1,1,1,1,1,1,1],[1,0,0,0,0,0,1,0,0,1,1,1,1,0,0,0,1,1,0,0,0,0,1,0,0,0,0,0,1],[1,0,1,1,1,0,1,0,0,1,0,1,0,0,1,1,0,1,0,0,1,0,1,0,1,1,1,0,1],[1,0,1,1,1,0,1,0,0,0,1,0,0,1,0,0,1,0,1,1,1,0,1,0,1,1,1,0,1],[1,0,1,1,1,0,1,0,0,1,1,1,1,0,0,0,0,1,1,0,0,0,1,0,1,1,1,0,1],[1,0,0,0,0,0,1,0,1,0,1,0,0,0,0,1,1,1,1,1,0,0,1,0,0,0,0,0,1],[1,1,1,1,1,1,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,1,1,1,1,1,1],[0,0,0,0,0,0,0,0,0,1,1,1,0,1,0,1,1,1,0,1,0,0,0,0,0,0,0,0,0],[1,0,0,1,0,1,1,0,1,0,1,0,0,0,1,0,1,0,0,0,1,1,0,1,0,0,0,0,0],[0,0,0,0,1,1,0,1,0,1,1,0,1,1,0,1,1,1,1,0,1,0,1,0,0,1,0,0,1],[1,1,0,1,1,0,1,1,0,0,0,1,0,1,1,1,0,1,1,1,0,1,0,1,0,1,1,1,0],[0,1,0,1,1,0,0,0,1,1,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0],[1,1,0,1,1,1,1,0,1,0,0,0,0,0,1,1,0,0,0,0,0,1,1,0,0,1,0,1,1],[1,0,1,0,1,0,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,1,0,0,1,1,1,0,1,1,0,0,0,0,0,1,0,1,1,0,1,1,1,1],[1,0,0,1,1,1,0,0,1,1,1,1,0,0,0,1,0,1,1,1,0,1,1,0,1,1,0,1,0],[1,0,1,1,0,0,1,0,0,1,0,1,0,1,0,0,0,1,0,1,1,0,0,0,0,0,0,1,0],[0,0,0,0,0,0,0,0,0,1,0,1,1,1,1,1,1,0,1,0,0,1,1,1,0,1,0,0,1],[1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,0,0,0,0,1,0,1,1,0,0,1,1],[0,0,0,1,0,1,0,1,0,1,0,1,1,0,1,0,0,1,0,1,1,1,0,1,1,0,0,1,1],[1,0,1,1,1,1,1,0,0,0,1,0,1,0,0,1,1,0,0,1,1,1,1,1,1,0,1,0,0],[0,0,0,0,0,0,0,0,1,0,0,1,0,0,1,1,0,0,0,1,1,0,0,0,1,0,1,1,1],[1,1,1,1,1,1,1,0,0,0,0,1,1,0,0,0,0,1,0,0,1,0,1,0,1,0,0,1,0],[1,0,0,0,0,0,1,0,1,0,0,0,1,0,1,1,0,0,1,1,1,0,0,0,1,1,1,0,1],[1,0,1,1,1,0,1,0,0,0,0,1,0,0,0,1,1,1,0,0,1,1,1,1,1,0,0,1,0],[1,0,1,1,1,0,1,0,1,1,1,0,0,0,0,0,0,1,1,1,0,0,1,1,1,1,1,0,1],[1,0,1,1,1,0,1,0,0,0,0,1,1,0,1,0,0,1,0,1,0,0,0,0,1,1,1,0,1],[1,0,0,0,0,0,1,0,0,1,0,0,1,1,0,0,0,1,1,1,1,0,0,1,0,0,0,1,0],[1,1,1,1,1,1,1,0,1,1,0,0,0,1,1,0,0,1,0,0,1,1,0,1,0,1,0,1,0]];const q=200,qx=52,qy=592,cs=q/QR.length;x.fillStyle="#fff";rr(x,qx-14,qy-14,q+28,q+28,18);x.fill();x.fillStyle=COL.black;
+    QR.forEach((row,yy)=>row.forEach((v,xx)=>{if(v)x.fillRect(qx+xx*cs,qy+yy*cs,cs+.5,cs+.5);}));
+    x.font='700 17px Montserrat';x.fillStyle=COL.grey;x.fillText("SCAN FOR",300,652);x.fillStyle="#fff";x.font='400 56px "Bebas Neue"';x.fillText("ALL MY LINKS",300,708);
+    x.fillStyle=COL.blue;x.fillRect(0,H-22,W,22);
+  }
+  const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;t.anisotropy=8;return t;}
+await document.fonts.ready;
+const CW=2.7,CH=CW*920/640;const card=new THREE.Group();bs.add(card);
+const mkFace=(tex,flip)=>{const m=new THREE.Mesh(new THREE.PlaneGeometry(CW,CH),new THREE.MeshStandardMaterial({map:tex,emissive:0xffffff,emissiveMap:tex,emissiveIntensity:.32,roughness:.45,transparent:true,alphaTest:.5}));
+  m.position.z=flip?-.011:.011;if(flip)m.rotation.y=Math.PI;m.position.y=-CH/2;card.add(m);return m;};
+const front=mkFace(cardFace(false),false),back=mkFace(cardFace(true),true);
+const edge=new THREE.Mesh(new THREE.BoxGeometry(CW*.985,CH*.985,.02),new THREE.MeshStandardMaterial({color:0x15161c,roughness:.6}));edge.position.y=-CH/2;card.add(edge);
+const clip=new THREE.Mesh(new THREE.TorusGeometry(.085,.025,12,32),new THREE.MeshStandardMaterial({color:0xd5d9e3,metalness:.6,roughness:.25}));clip.position.y=-.05;card.add(clip);
+const clampM=new THREE.Mesh(new THREE.BoxGeometry(.2,.12,.06),new THREE.MeshStandardMaterial({color:0xc3c8d4,metalness:.6,roughness:.3}));clampM.position.y=.09;card.add(clampM);
+const strapTex=(()=>{const c=document.createElement("canvas");c.width=1024;c.height=96;const x=c.getContext("2d");x.fillStyle=COL.blue;x.fillRect(0,0,1024,96);
+  x.fillStyle="#fff";x.font='400 58px "Bebas Neue"';x.textBaseline="middle";x.fillText("%%NAMEU%%  ✦  GRAPHIC DESIGNER  ✦  %%NAMEU%%  ✦",20,52);
+  const t=new THREE.CanvasTexture(c);t.wrapS=THREE.RepeatWrapping;t.colorSpace=THREE.SRGBColorSpace;t.anisotropy=8;return t;})();
+const SEG=48;const strapGeo=new THREE.BufferGeometry();const sPos=new Float32Array((SEG+1)*6),sUV=new Float32Array((SEG+1)*4),sIdx=[];
+for(let i=0;i<SEG;i++){const a=i*2;sIdx.push(a,a+1,a+2,a+1,a+3,a+2);}
+strapGeo.setIndex(sIdx);strapGeo.setAttribute("position",new THREE.BufferAttribute(sPos,3));strapGeo.setAttribute("uv",new THREE.BufferAttribute(sUV,2));
+bs.add(new THREE.Mesh(strapGeo,new THREE.MeshStandardMaterial({map:strapTex,side:THREE.DoubleSide,roughness:.7,emissive:0xffffff,emissiveMap:strapTex,emissiveIntensity:.25})));
+const N=12,ROPE=2.35,SL=ROPE/(N-1);const anchor=new THREE.Vector3(0,4.2,0);
+const P=[],Q=[];for(let i=0;i<N+1;i++){P.push(new THREE.Vector3());Q.push(new THREE.Vector3());}
+const LEN=i=>i<N-1?SL:CH*.9;
+function layout(lift){for(let i=0;i<N;i++){P[i].set(anchor.x+(i/N)*.6,anchor.y-i*SL+lift,0);Q[i].copy(P[i]);}P[N].set(P[N-1].x+.4,P[N-1].y-CH*.9,0);Q[N].copy(P[N]);}
+let grab=null,flip=0,cRotY=0,vY=0,bDown=[0,0];
+function bResize(){const r=bc.getBoundingClientRect();if(r.width<2||r.height<2)return;br.setSize(r.width,r.height,false);bcam.aspect=r.width/r.height;bcam.updateProjectionMatrix();anchor.set(0,Math.tan(15*Math.PI/180)*13+.4,0);}
+bResize();layout(0);
+function step(dt){const g=-14;
+  for(let i=1;i<=N;i++){const p=P[i],q=Q[i];const vx=(p.x-q.x)*.985,vy=(p.y-q.y)*.985,vz=(p.z-q.z)*.9;q.copy(p);p.x+=vx;p.y+=vy+g*dt*dt*(i===N?1.4:1);p.z+=vz;p.z*=.98;}
+  for(let it=0;it<14;it++){P[0].copy(anchor);
+    for(let i=0;i<N;i++){const a=P[i],b=P[i+1];const d=b.clone().sub(a);const L2=d.length()||1e-6;const diff=(L2-LEN(i))/L2;
+      if(i===0)b.addScaledVector(d,-diff);else{a.addScaledVector(d,diff*.5);b.addScaledVector(d,-diff*.5);}}
+    if(grab){const top=P[N-1],bot=P[N];const gp=top.clone().lerp(bot,grab.f);const dl=grab.target.clone().sub(gp);top.add(dl);bot.add(dl);}}}
+const bray=new THREE.Raycaster(),bndc=new THREE.Vector2(),plane=new THREE.Plane(new THREE.Vector3(0,0,1),0);
+function worldAt(e){const r=bc.getBoundingClientRect();bndc.set((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1);bray.setFromCamera(bndc,bcam);return bray.ray.intersectPlane(plane,new THREE.Vector3());}
+bc.addEventListener("pointerdown",e=>{bDown=[e.clientX,e.clientY];const r=bc.getBoundingClientRect();bndc.set((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1);bray.setFromCamera(bndc,bcam);
+  if(!bray.intersectObjects([front,back,edge])[0])return;const w=worldAt(e);const top=P[N-1],bot=P[N];const ab=bot.clone().sub(top);
+  grab={f:Math.max(0,Math.min(1,w.clone().sub(top).dot(ab)/ab.lengthSq())),target:w};bc.classList.add("grabbing");bc.setPointerCapture(e.pointerId);});
+bc.addEventListener("pointermove",e=>{if(!grab)return;const w=worldAt(e);if(w)grab.target.copy(w);});
+bc.addEventListener("pointerup",e=>{if(!grab)return;grab=null;bc.classList.remove("grabbing");if(Math.hypot(e.clientX-bDown[0],e.clientY-bDown[1])<6){flip+=Math.PI;vY+=.05;}});
+bc.addEventListener("pointercancel",()=>{grab=null;bc.classList.remove("grabbing");});
+let badgeVis=false,started=false;
+new IntersectionObserver(([e])=>{badgeVis=e.isIntersecting;if(e.isIntersecting&&!started){started=true;layout(STILL?0:4);if(STILL)for(let i=0;i<600;i++)step(1/120);}},{threshold:.2}).observe(about);
+const tmp=new THREE.Vector3(),curve=new THREE.CatmullRomCurve3(P.slice(0,N));let acc=0;
+function badgeFrame(dt){if(!badgeVis||!started)return;acc+=Math.min(dt,.05);while(acc>1/120){step(1/120);acc-=1/120;}
+  const top=P[N-1],bot=P[N];const dir=bot.clone().sub(top);card.position.copy(top);card.rotation.z=Math.atan2(dir.x,-dir.y);
+  vY+=((flip-cRotY)*.012)+(top.x-Q[N-1].x)*.25;vY*=.92;cRotY+=vY;card.rotation.y=cRotY;card.rotation.x=Math.sin(cRotY)*.06;
+  curve.updateArcLengths();for(let i=0;i<=SEG;i++){const u=i/SEG;curve.getPointAt(u,tmp);const tg=curve.getTangentAt(u);const nx=-tg.y,ny=tg.x,hw=.13;
+    sPos.set([tmp.x+nx*hw,tmp.y+ny*hw,tmp.z,tmp.x-nx*hw,tmp.y-ny*hw,tmp.z],i*6);sUV.set([u*ROPE/2.2,1,u*ROPE/2.2,0],i*4);}
+  strapGeo.attributes.position.needsUpdate=true;strapGeo.attributes.uv.needsUpdate=true;strapGeo.computeVertexNormals();strapGeo.computeBoundingSphere();br.render(bs,bcam);}
+
+// ================= WORK: DOME =================
+const dc=document.getElementById("domeGL"),work=document.getElementById("work");
+const dr=new THREE.WebGLRenderer({canvas:dc,antialias:true,alpha:true});dr.setPixelRatio(Math.min(devicePixelRatio,2));
+const ds=new THREE.Scene();ds.fog=new THREE.Fog(0x050507,9,19);const dcam=new THREE.PerspectiveCamera(58,1,.1,100);dcam.position.set(0,0,.01);
+const WORDS=["BOLD","LAGOS","GROW","FRESH","2026","SHINE","OWN IT","FORM","CRAFT","VISION","STUDIO","%%NAMEU%%"];
+const KINDS=["Brand identity","Logo design","Poster","Social campaign","Print","Packaging"];
+function poster(i){
+  const portrait=rand()<.55,w=portrait?300:400,h=portrait?420:300,P2=28;const c=document.createElement("canvas");c.width=w+P2*2;c.height=h+P2*2;const x=c.getContext("2d");
+  const S=[[COL.black,"#fff",COL.blue],["#fff",COL.black,COL.blue],[COL.blue,"#fff",COL.black],[COL.paper,COL.blue,COL.black],[COL.blue2,"#fff","#fff"]];
+  const [bg,fg,ac]=S[Math.floor(rand()*S.length)];
+  x.save();x.shadowColor="rgba(0,0,0,.6)";x.shadowBlur=24;x.shadowOffsetY=12;x.fillStyle=bg;rr(x,P2,P2,w,h,8);x.fill();x.restore();
+  x.save();rr(x,P2,P2,w,h,8);x.clip();x.translate(P2,P2);const tpl=rand(),word=WORDS[Math.floor(rand()*WORDS.length)];
+  if(tpl<.28){x.fillStyle=fg;x.font=`400 ${Math.round(h*.42)}px "Bebas Neue"`;x.fillText(word,w*.07,h*.9);x.fillStyle=ac;x.beginPath();x.arc(w*.78,h*.2,h*.11,0,7);x.fill();
+    x.fillStyle=fg;x.font=`700 ${Math.round(h*.028)}px Montserrat`;x.fillText("POSTER SERIES — "+(i%9+1),w*.07,h*.07);}
+  else if(tpl<.48){x.strokeStyle=fg;x.globalAlpha=.85;x.lineWidth=2.2;const s=w/5;for(let a=0;a<6;a++)for(let b=0;b<8;b++){const cx=a*s+s/2,cy=b*s+s/2;const k=(a+b)%3;x.beginPath();
+      if(k===0){for(let r=6;r<s/2;r+=7){x.moveTo(cx+r,cy);x.arc(cx,cy,r,0,7);}}else if(k===1){x.moveTo(cx-s/3,cy-s/3);x.lineTo(cx+s/3,cy+s/3);x.moveTo(cx+s/3,cy-s/3);x.lineTo(cx-s/3,cy+s/3);}else{for(let r=0;r<4;r++){x.moveTo(cx-s/2.5,cy-s/3+r*s/5);x.lineTo(cx+s/2.5,cy-s/3+r*s/5);}}x.stroke();}
+    x.globalAlpha=1;x.fillStyle=fg;x.fillRect(0,h-46,w,46);x.fillStyle=bg;x.font=`400 30px "Bebas Neue"`;x.fillText(word,14,h-14);}
+  else if(tpl<.7){x.fillStyle=fg;const cx=w/2,cy=h*.42,R=Math.min(w,h)*.2;const m=Math.floor(rand()*4);x.beginPath();
+    if(m===0){x.arc(cx,cy,R,0,7);x.fill();x.fillStyle=bg;x.beginPath();x.arc(cx+R*.35,cy-R*.1,R*.55,0,7);x.fill();}
+    else if(m===1){x.moveTo(cx,cy-R);x.lineTo(cx+R,cy+R*.8);x.lineTo(cx-R,cy+R*.8);x.closePath();x.fill();x.fillStyle=ac;x.fillRect(cx-R*.18,cy-R*.1,R*.36,R*.9);}
+    else if(m===2){x.fillRect(cx-R,cy-R,R*.7,R*2);x.fillRect(cx-R,cy-R,R*2,R*.7);x.fillStyle=ac;x.beginPath();x.arc(cx+R*.4,cy+R*.4,R*.45,0,7);x.fill();}
+    else{x.lineWidth=R*.32;x.strokeStyle=fg;x.arc(cx,cy,R,Math.PI*.2,Math.PI*1.8);x.stroke();x.fillStyle=ac;x.beginPath();x.arc(cx+R*.95,cy,R*.2,0,7);x.fill();}
+    x.fillStyle=fg;x.font=`400 ${Math.round(h*.1)}px "Bebas Neue"`;x.textAlign="center";x.fillText(word,cx,h*.82);x.font=`500 ${Math.round(h*.03)}px Montserrat`;x.globalAlpha=.6;x.fillText("LOGO DESIGN",cx,h*.9);x.globalAlpha=1;}
+  else{for(let k=0;k<5;k++){x.fillStyle=k%2?ac:fg;x.globalAlpha=.9;x.beginPath();x.arc(w*(.2+rand()*.6),h*(.15+rand()*.5),h*(.06+rand()*.16),0,7);x.fill();}
+    x.globalAlpha=1;x.fillStyle=fg;x.fillRect(w*.07,h*.72,w*.86,3);x.font=`400 ${Math.round(h*.13)}px "Bebas Neue"`;x.fillText(word,w*.07,h*.88);x.font=`500 ${Math.round(h*.028)}px Montserrat`;x.fillText("Brand campaign",w*.07,h*.95);}
+  x.restore();const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;t.anisotropy=4;return {t,a:c.width/c.height};}
+const WORKS=[["Eid Mubarak", "D Gadgets \u00b7 Social post"], ["Monday Deals", "D Gadgets \u00b7 Promo flyer"], ["April, Fully Loaded", "D Gadgets \u00b7 New-month promo"], ["Healthy Living @UNIZIK", "Student Union \u00b7 Event flyer"], ["Karaoke Night", "Luxe Skyside Hotel \u00b7 Event flyer"], ["City Rave \u2014 Jungle Invasion", "Rave flyer"], ["DJ BOIZ \u2014 Road2December Tour", "Tour visuals"], ["The Playmakers", "Event flyer"], ["Face Off \u2014 Hotwater 1.0", "Music competition flyer"], ["Dera The Plug", "Crypto & gift-card ad"], ["October / Independence Day", "DEL Tech \u00b7 New-month promo"], ["Jeans for Kings & Queens", "MJ Luxe Denim \u00b7 Product ad"], ["Place Your Order", "The Food Lab \u00b7 Food flyer"], ["MJ Luxe Denim", "Logo design"], ["Dera The Plug", "Logo design"], ["The Bold Lens Podcast", "Carousel design"]];
+const workImgs=await Promise.all(WORKS.map((_,i)=>new Promise(r=>{const im=new Image();im.onload=()=>r(im);im.onerror=()=>r(null);im.src="img/w"+String(i+1).padStart(2,"0")+".webp";})));
+function workCard(img){const H=560,w=Math.round(img.width*H/img.height),P2=30;const c=document.createElement("canvas");c.width=w+P2*2;c.height=H+P2*2;const x=c.getContext("2d");
+  x.save();x.shadowColor="rgba(0,0,0,.6)";x.shadowBlur=26;x.shadowOffsetY=12;x.fillStyle="#111";rr(x,P2,P2,w,H,12);x.fill();x.restore();
+  x.save();rr(x,P2,P2,w,H,12);x.clip();x.drawImage(img,P2,P2,w,H);x.restore();
+  const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;t.anisotropy=8;return {t,a:c.width/c.height};}
+const workTex=workImgs.map(im=>im?workCard(im):poster(0));
+const dome=new THREE.Group();ds.add(dome);const cards=[];
+const BANDS=[[-1.26,7],[-.84,11],[-.42,15],[0,16],[.42,15],[.84,11],[1.26,7]];
+let ci=0;for(const [off,n] of BANDS){const phi=Math.PI/2+off;for(let i=0;i<n;i++){const th=(i/n)*Math.PI*2+off*2.1;const wi=(ci*5+Math.floor(ci/16))%WORKS.length;const {t,a}=workTex[wi];const hh=2.35;
+  const m=new THREE.Mesh(new THREE.PlaneGeometry(hh*a,hh),new THREE.MeshBasicMaterial({map:t,transparent:true}));m.position.setFromSphericalCoords(8.2,phi,th);m.lookAt(0,0,0);
+  m.userData={name:WORKS[wi][0],kind:WORKS[wi][1],slug:""};m.userData.wi=wi;dome.add(m);cards.push(m);ci++;}}
+let drag=false,dx0=0,dy0=0,vx=0,vy=0,rotY=0,rotX=0,down=[0,0];
+dc.addEventListener("pointerdown",e=>{drag=true;dx0=e.clientX;dy0=e.clientY;down=[e.clientX,e.clientY];dc.classList.add("grabbing");});
+addEventListener("pointermove",e=>{if(!drag)return;vx=(e.clientX-dx0)*.0035;vy=e.pointerType==="touch"?0:(e.clientY-dy0)*.0022;rotY+=vx;rotX+=vy;dx0=e.clientX;dy0=e.clientY;});
+const endD=()=>{drag=false;dc.classList.remove("grabbing");};addEventListener("pointerup",endD);addEventListener("pointercancel",endD);
+const ray=new THREE.Raycaster(),ndc=new THREE.Vector2();let focus=null;const camT=new THREE.Vector3(0,0,.01),lookT=new THREE.Vector3(0,0,-1),lookC=new THREE.Vector3(0,0,-1);
+dc.addEventListener("click",e=>{if(Math.hypot(e.clientX-down[0],e.clientY-down[1])>6)return;const r=dc.getBoundingClientRect();ndc.set((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1);
+  ray.setFromCamera(ndc,dcam);const hit=ray.intersectObjects(cards)[0];if(hit)setFocus(hit.object);});
+function setFocus(c){focus=c;document.getElementById("capGo").href="work.html#brand-"+c.userData.slug;document.getElementById("capT").textContent=c.userData.name;document.getElementById("capS").textContent=c.userData.kind;work.classList.add("focused");cards.forEach(k=>k.material.opacity=k===c?1:.14);}
+function clearFocus(){focus=null;camT.set(0,0,.01);lookT.set(0,0,-1);work.classList.remove("focused");cards.forEach(k=>k.material.opacity=1);}
+document.getElementById("back").addEventListener("click",clearFocus);addEventListener("keydown",e=>{if(e.key==="Escape")clearFocus();});
+function domeResize(){const r=dc.getBoundingClientRect();if(r.width<2||r.height<2)return;dr.setSize(r.width,r.height,false);dcam.aspect=r.width/r.height;dcam.fov=r.width<r.height?78:58;dcam.updateProjectionMatrix();}
+domeResize();
+let domeVis=false,domeT0=null;new IntersectionObserver(([e])=>domeVis=e.isIntersecting).observe(work);
+function domeFrame(t){if(!domeVis)return;if(domeT0===null)domeT0=t;const k=STILL?1:Math.min(1,(t-domeT0)/1.2),kk=k*k*(3-2*k);dome.scale.setScalar(.6+.4*kk);
+  if(!drag){vx*=.95;vy*=.95;rotY+=vx;rotX+=vy;}if(!STILL&&!focus)rotY+=.0008;rotX=Math.max(-.5,Math.min(.5,rotX));dome.rotation.y=rotY;dome.rotation.x=rotX;
+  if(focus){const p=focus.getWorldPosition(new THREE.Vector3());camT.copy(p).multiplyScalar(.7);lookT.copy(p);}
+  dcam.position.lerp(camT,STILL?1:.06);lookC.lerp(lookT,STILL?1:.08);dcam.lookAt(lookC);dr.render(ds,dcam);}
+
+// ================= CONTACT: 3D "A" MONOGRAM =================
+const mc=document.getElementById("monoGL"),contact=document.getElementById("contact");
+const mr=new THREE.WebGLRenderer({canvas:mc,antialias:true,alpha:true});mr.setPixelRatio(Math.min(devicePixelRatio,2));mr.toneMapping=THREE.ACESFilmicToneMapping;mr.outputColorSpace=THREE.SRGBColorSpace;
+const ms=new THREE.Scene();ms.environment=makeEnv(mr);ms.environmentIntensity=1.9;
+const mk=new THREE.DirectionalLight(0xffffff,2.2);mk.position.set(-4,5,8);ms.add(mk);const mk2=new THREE.PointLight(0x6f8dff,40,20);mk2.position.set(3,-2,5);ms.add(mk2);const mcam=new THREE.PerspectiveCamera(32,1,.1,100);mcam.position.set(0,0,12);
+const M2=shinyMats();M2.blue=M2.blue.clone();M2.blue.color.set(0x2a5cff);M2.blue.emissive=new THREE.Color(0x0b2bb8);M2.blue.emissiveIntensity=.55;
+const E=new THREE.Shape();[[0,0],[1.02,0],[1.36,1.02],[2.64,1.02],[2.98,0],[4,0],[2.58,4],[1.42,4]].forEach(([x,y],i)=>i?E.lineTo(x,y):E.moveTo(x,y));E.closePath();const Eh=new THREE.Path();[[1.62,1.78],[2,2.95],[2.38,1.78]].forEach(([x,y],i)=>i?Eh.lineTo(x,y):Eh.moveTo(x,y));Eh.closePath();E.holes.push(Eh);
+const mono=new THREE.Group();ms.add(mono);
+const eMesh=new THREE.Mesh(extrude(E,.9,.14),M2.blue);mono.add(eMesh);
+const dot=new THREE.Mesh(new THREE.SphereGeometry(.42,48,32),M2.chrome);dot.position.set(2.45,-1.7,.55);mono.add(dot);
+const ringM=new THREE.Mesh(new THREE.TorusGeometry(3.3,.035,16,160),M2.white);ringM.rotation.x=1.25;ms.add(ringM);
+const orbs=[0,1,2].map(i=>{const m=new THREE.Mesh(new THREE.SphereGeometry(.16+i*.05,32,24),i===1?M2.white:M2.chrome);ms.add(m);return m;});
+let mPtr={x:0,y:0};mc.parentElement.addEventListener("pointermove",e=>{const r=mc.getBoundingClientRect();mPtr.x=(e.clientX-r.left)/r.width*2-1;mPtr.y=(e.clientY-r.top)/r.height*2-1;});
+function mResize(){const r=mc.getBoundingClientRect();if(r.width<2||r.height<2)return;mr.setSize(r.width,r.height,false);mcam.aspect=r.width/r.height;mcam.position.z=r.width<r.height?15:12;mcam.updateProjectionMatrix();}
+mResize();let monoVis=false;new IntersectionObserver(([e])=>monoVis=e.isIntersecting).observe(contact);
+function monoFrame(t){if(!monoVis)return;const tt=STILL?1.2:t;
+  mono.rotation.y+=((mPtr.x*.7+Math.sin(tt*.5)*.35-.35)-mono.rotation.y)*.05;mono.rotation.x+=((mPtr.y*.35)-mono.rotation.x)*.05;mono.position.y=Math.sin(tt*.9)*.12;
+  ringM.rotation.z=tt*.15;orbs.forEach((o,i)=>{const a=tt*(.45+i*.12)+i*2.1;o.position.set(Math.cos(a)*3.3,Math.sin(a)*3.3*Math.cos(1.25),Math.sin(a)*3.3*Math.sin(1.25)*-1);});
+  mr.render(ms,mcam);}
+
+
+// ================= EXPLORE: gallery + brand pages (hash routes #gallery, #brand-<name>) =================
+const META=[["D Gadgets", "social"], ["D Gadgets", "social"], ["D Gadgets", "social"], ["UNIZIK Student Union", "event"], ["Luxe Skyside Hotel", "event"], ["City Rave", "event"], ["DJ BOIZ", "event"], ["The Playmakers", "event"], ["Face Off", "event"], ["Dera The Plug", "social"], ["DEL Tech & Gadgets", "social"], ["MJ Luxe Denim", "social"], ["The Food Lab", "social"], ["MJ Luxe Denim", "logo"], ["Dera The Plug", "logo"], ["The Bold Lens Podcast", "carousel"]];const CLIENTS=["D Gadgets", "DEL Tech & Gadgets", "Dera The Plug", "MJ Luxe Denim", "The Food Lab", "FastVenda", "Luxe Skyside Hotel", "DJ BOIZ", "The Bold Lens Podcast", "Verified Charles Luggages", "Favorite Closet", "UNIZIK Student Union", "Ocat Adventures UK"];
+const CAT={social:"Social media flyers",event:"Event & party flyers",logo:"Logos & identity",carousel:"Carousels"};
+const slug=n=>n.toLowerCase().replace(/&/g,"and").replace(/[^a-z0-9]+/g,"-").replace(/(^-|-$)/g,"");
+const esc=t=>t.replace(/&/g,"&amp;").replace(/</g,"&lt;");
+const ITEMS=WORKS.map((w,i)=>({i,title:w[0],kind:w[1],brand:META[i][0],cat:META[i][1],img:"img/w"+String(i+1).padStart(2,"0")+".webp"}));
+const BRANDS=[...new Set(ITEMS.map(x=>x.brand))];
+const tile=(x,cls="")=>`<a class="tile ${cls}" data-cat="${x.cat}" href="#brand-${slug(x.brand)}"><div class="in"><img loading="lazy" src="${x.img}" alt="${esc(x.title)} — ${esc(x.brand)}"/><div class="meta"><div><b>${esc(x.title)}</b><small>${esc(x.brand)} · ${CAT[x.cat]}</small></div><span>↗</span></div></div></a>`;
+const gal=document.getElementById("pg-gallery"),bpg=document.getElementById("pg-brand");
+gal.innerHTML=`<a class="backlink" href="#work">← Back to home</a><div class="top"><div><div class="kicker">All work · ${ITEMS.length} designs · ${BRANDS.length} brands</div><h1 class="disp">Explore<br/><em>the work.</em></h1></div></div>
+<div class="filters"><button class="on" data-f="all">All</button>${Object.entries(CAT).map(([k,v])=>`<button data-f="${k}">${v}</button>`).join("")}</div>
+<div class="grid">${ITEMS.map(x=>tile(x)).join("")}</div>`;
+gal.querySelectorAll(".filters button").forEach(b=>b.addEventListener("click",()=>{gal.querySelectorAll(".filters button").forEach(x=>x.classList.toggle("on",x===b));
+  gal.querySelectorAll(".tile").forEach(t=>t.classList.toggle("hide",b.dataset.f!=="all"&&t.dataset.cat!==b.dataset.f));}));
+function brandPage(name){const xs=ITEMS.filter(x=>x.brand===name);const cats=[...new Set(xs.map(x=>CAT[x.cat]))];const others=BRANDS.filter(b=>b!==name);
+  bpg.innerHTML=`<a class="backlink" href="#gallery">← All work</a><div class="brandhead"><div><div class="kicker">Brand</div><h1 class="disp">${esc(name)}<em>.</em></h1></div>
+  <div class="facts2"><div><small>Designs</small><b>${xs.length}</b></div><div><small>Type</small><b>${esc(cats.join(" · "))}</b></div></div></div>
+  <div class="bgrid">${xs.map(x=>tile(x,"big")).join("")}</div>
+  <div class="pgcta"><a class="cta" href="https://wa.me/2348025906665" target="_blank" rel="noopener"><span>Want designs like this? Chat on WhatsApp</span><span>→</span></a></div>
+  <div class="more"><div class="kicker">More brands</div><div class="row2">${others.map(b=>`<a href="#brand-${slug(b)}">${esc(b)}</a>`).join("")}</div></div>`;
+  bpg.querySelectorAll(".tile").forEach(t=>t.removeAttribute("href"));tilt(bpg);}
+function tilt(root){root.querySelectorAll(".tile .in").forEach(el=>{el.addEventListener("pointermove",e=>{const r=el.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+  el.style.transform=`rotateY(${x*10}deg) rotateX(${-y*10}deg) translateZ(10px)`;});el.addEventListener("pointerleave",()=>el.style.transform="");});}
+tilt(gal);
+const pages=document.getElementById("pages");let paged=false;
+function route(){const h=decodeURIComponent(location.hash.slice(1));
+  if(h==="gallery"){gal.classList.add("on");bpg.classList.remove("on");open_();}
+  else if(h.startsWith("brand-")){const name=BRANDS.find(b=>"brand-"+slug(b)===h);if(!name){location.hash="gallery";return;}brandPage(name);bpg.classList.add("on");gal.classList.remove("on");open_();}
+  else if(paged){paged=false;body.classList.remove("paged");}}
+function open_(){if(!paged){paged=true;body.classList.add("paged");}pages.scrollTop=0;}
+addEventListener("hashchange",route);route();
+// dome caption "View project" goes to that brand's page
+const capGo=document.getElementById("capGo");cards.forEach(c=>c.userData.slug=slug(META[c.userData.wi][0]));
+// brand belts on the home page
+function chip(n){const has=BRANDS.includes(n);const tag=has?"a":"div";return `<${tag} class="chip"${has?` href="work.html#brand-${slug(n)}"`:""}><i>${esc(n[0])}</i>${esc(n)}${has?"<small>VIEW ↗</small>":""}</${tag}>`;}
+const half=Math.ceil(CLIENTS.length/2),r1=CLIENTS.slice(0,half),r2=CLIENTS.slice(half);
+document.getElementById("belt1").innerHTML=[...r1,...r1,...r1,...r1].map(chip).join("");
+document.getElementById("belt2").innerHTML=[...r2,...r2,...r2,...r2].map(chip).join("");
+
+// ================= CARD TUNNEL (scroll flies the camera through his designs) =================
+const tc=document.getElementById("tunnelGL"),tun=document.getElementById("tunnel");
+const trr=new THREE.WebGLRenderer({canvas:tc,antialias:true});trr.setPixelRatio(Math.min(devicePixelRatio,1.75));trr.setClearColor(0x000000);trr.outputColorSpace=THREE.SRGBColorSpace;
+const ts=new THREE.Scene();ts.fog=new THREE.Fog(0x000000,5,30);
+const tcam=new THREE.PerspectiveCamera(72,1,.1,80);
+const TN=isPhone()?48:72,GAP=1.45,TL=TN*GAP;const tcards=[];
+for(let i=0;i<TN;i++){const wi=(i*7)%WORKS.length;const {t,a}=workTex[wi];const h=1.9;
+  const m=new THREE.Mesh(new THREE.PlaneGeometry(h*a,h),new THREE.MeshBasicMaterial({map:t,transparent:true}));
+  const ang=i*2.399,r=2.7+(i%3)*.45;m.position.set(Math.cos(ang)*r*1.3,Math.sin(ang)*r*.85,-i*GAP-5);
+  m.lookAt(0,0,m.position.z+9);m.rotation.z+=(Math.sin(i*1.7))*.25;m.userData.base=m.position.clone();ts.add(m);tcards.push(m);}
+for(let z=0;z<TL+10;z+=6){const ring=new THREE.Mesh(new THREE.RingGeometry(4.6,4.64,96),new THREE.MeshBasicMaterial({color:0x2251ff,transparent:true,opacity:.35,side:THREE.DoubleSide}));ring.position.z=-z;ring.scale.set(1.35,.95,1);ts.add(ring);}
+const SN=500,sp=new Float32Array(SN*3);for(let i=0;i<SN;i++){const a=Math.random()*6.283,r=1+Math.random()*5;sp[i*3]=Math.cos(a)*r*1.3;sp[i*3+1]=Math.sin(a)*r;sp[i*3+2]=-Math.random()*(TL+10);}
+const sg=new THREE.BufferGeometry();sg.setAttribute("position",new THREE.BufferAttribute(sp,3));ts.add(new THREE.Points(sg,new THREE.PointsMaterial({map:SPR,size:.07,color:0x9fb4ff,transparent:true,depthWrite:false,blending:THREE.AdditiveBlending})));
+function tResize(){const r=tc.getBoundingClientRect();if(r.width<2||r.height<2)return;trr.setSize(r.width,r.height,false);tcam.aspect=r.width/r.height;tcam.fov=r.width<r.height?86:72;tcam.updateProjectionMatrix();}
+tResize();new ResizeObserver(tResize).observe(tc);
+let tunVis=false,tp=0;new IntersectionObserver(([e])=>tunVis=e.isIntersecting).observe(tun);
+const tcaps=[...document.querySelectorAll(".tcap span")],tbar=document.getElementById("tbar");let tcapI=0;
+function tunnelFrame(t){if(!tunVis)return;const r=tun.getBoundingClientRect();const target=STILL?.35:Math.min(1,Math.max(0,-r.top/(r.height-innerHeight)));
+  tp+=(target-tp)*.12;tcam.position.z=2-tp*(TL-4);const ox=ptr.has?ptr.nx:Math.sin(t*.3)*.3,oy=ptr.has?ptr.ny:0;
+  tcam.position.x+=(ox*.8-tcam.position.x)*.06;tcam.position.y+=(-oy*.5-tcam.position.y)*.06;tcam.rotation.z=tp*1.2;
+  tcards.forEach((m,i)=>{const d=m.position.z-tcam.position.z;m.position.x=m.userData.base.x*(1+Math.max(0,d+3)*-.04);m.material.opacity=Math.min(1,Math.max(0,(d+.6)*-1.2+.2)+.0)||1;if(d>.5)m.material.opacity=0;else m.material.opacity=1;});
+  const ci=Math.min(tcaps.length-1,Math.floor(tp*tcaps.length*.999));if(ci!==tcapI){tcaps[tcapI].classList.remove("on");tcaps[ci].classList.add("on");tcapI=ci;}
+  tbar.style.scale=tp+" 1";trr.render(ts,tcam);}
+
+// ================= INK REVEAL footer =================
+const ink=document.getElementById("inkGL"),ictx=ink.getContext("2d");const mask=document.createElement("canvas"),mctx=mask.getContext("2d");const col=document.createElement("canvas"),cctx=col.getContext("2d");
+const inkImgs=[0,6,4,12,11].map(i=>workImgs[i]).filter(Boolean);
+let IW=0,IH=0,inkPts=[],inkVis=false,lastInk=0;const IDPR=Math.min(devicePixelRatio,2);
+function inkResize(){const w=ink.parentElement.clientWidth;if(w<2)return;IW=Math.round(w*IDPR);IH=Math.round(w*.34*IDPR);[ink,mask,col].forEach(c=>{c.width=IW;c.height=IH;});ink.style.height=(w*.34)+"px";}
+inkResize();new ResizeObserver(inkResize).observe(ink.parentElement);
+new IntersectionObserver(([e])=>inkVis=e.isIntersecting).observe(ink);
+ink.addEventListener("pointermove",e=>{const r=ink.getBoundingClientRect();inkPts.push([(e.clientX-r.left)*IDPR,(e.clientY-r.top)*IDPR]);lastInk=performance.now();});
+function blob(x,y,rad){const g=mctx.createRadialGradient(x,y,0,x,y,rad);g.addColorStop(0,"rgba(0,0,0,1)");g.addColorStop(.6,"rgba(0,0,0,.85)");g.addColorStop(1,"rgba(0,0,0,0)");mctx.fillStyle=g;mctx.beginPath();mctx.arc(x,y,rad,0,7);mctx.fill();}
+function inkText(c){c.font=`400 ${Math.round(IH*1.02)}px "Bebas Neue"`;c.textAlign="center";c.textBaseline="alphabetic";c.fillText("%%NAMEU%%.",IW/2,IH*.93);}
+function inkFrame(t){if(!inkVis||!IW)return;
+  mctx.globalCompositeOperation="destination-out";mctx.fillStyle="rgba(0,0,0,.018)";mctx.fillRect(0,0,IW,IH);mctx.globalCompositeOperation="source-over";
+  const S2=IW/1400;
+  if(STILL){if(!inkFrame.done){for(let i=0;i<14;i++)blob(IW*(.15+i*.05),IH*(.4+Math.sin(i)*.25),140*S2);inkFrame.done=1;}}
+  else if(performance.now()-lastInk>1800){const x=IW*(.5+Math.sin(t*.6)*.42),y=IH*(.5+Math.sin(t*1.3)*.3);blob(x,y,(90+Math.sin(t*3)*30)*S2);}
+  inkPts.splice(0).forEach(([x,y])=>{for(let k=0;k<3;k++)blob(x+(Math.random()-.5)*60*S2,y+(Math.random()-.5)*60*S2,(60+Math.random()*90)*S2);});
+  ictx.clearRect(0,0,IW,IH);ictx.fillStyle="#050507";inkText(ictx);
+  cctx.globalCompositeOperation="source-over";cctx.clearRect(0,0,IW,IH);
+  const n=inkImgs.length||1,sw=IW/n;inkImgs.forEach((im,i)=>{const sc=Math.max(sw/im.width,IH/im.height);const w=im.width*sc,h=im.height*sc;cctx.save();cctx.beginPath();cctx.rect(i*sw,0,sw,IH);cctx.clip();cctx.drawImage(im,i*sw+(sw-w)/2,(IH-h)/2,w,h);cctx.restore();});
+  cctx.globalCompositeOperation="destination-in";cctx.fillStyle="#fff";inkText(cctx);
+  cctx.globalCompositeOperation="source-atop";cctx.fillStyle="rgba(34,81,255,.35)";cctx.fillRect(0,0,IW,IH);
+  cctx.globalCompositeOperation="destination-in";cctx.drawImage(mask,0,0);ictx.drawImage(col,0,0);}
+
+addEventListener("resize",()=>{heroResize();bResize();domeResize();mResize();});
+[[bc,bResize],[dc,domeResize],[mc,mResize]].forEach(([c,f])=>new ResizeObserver(()=>f()).observe(c));
+const clock=new THREE.Clock();let last=0;
+function frame(){requestAnimationFrame(frame);if(body.classList.contains("paged"))return;const t=STILL?2:clock.getElapsedTime();const dt=Math.min(.05,Math.max(0,t-last));last=t;
+  heroFrame(t,dt);badgeFrame(STILL?0:dt);domeFrame(t);monoFrame(t);tunnelFrame(t);inkFrame(t);}
+frame();
+</script>
+%%MENU%%
+</body>
+</html>

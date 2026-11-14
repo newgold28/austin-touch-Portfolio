@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Contact — %%NAME%%, Graphic Designer</title>
+<meta name="description" content="Start a project with %%NAME%% — flyers, party designs, logos and social media."/>
+<style>
+@font-face{font-family:"Bebas Neue";src:url(data:font/woff2;base64,%%BEBAS%%) format("woff2");font-display:swap}
+@font-face{font-family:"Montserrat";font-weight:500;src:url(data:font/woff2;base64,%%M500%%) format("woff2");font-display:swap}
+@font-face{font-family:"Montserrat";font-weight:700;src:url(data:font/woff2;base64,%%M700%%) format("woff2");font-display:swap}
+:root{--black:#050507;--white:#fff;--blue:#2251ff;--blueL:#7f9bff;--mut:#9a9cab;--e-out:cubic-bezier(.22,1,.36,1);--e-sig:cubic-bezier(.34,1.56,.64,1)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--black);color:var(--white);font:500 15px/1.5 "Montserrat",sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}button,input,textarea{font:inherit;color:inherit}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+.disp{font-family:"Bebas Neue";font-weight:400;line-height:.86}
+.grain{position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.06;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.bar{position:fixed;top:16px;left:3vw;right:3vw;z-index:50;display:flex;justify-content:space-between;align-items:center}
+.pill{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:999px;font-weight:700;font-size:12px;letter-spacing:.12em;text-transform:uppercase;background:rgba(12,12,18,.65);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(14px);transition:background .4s var(--e-out),translate .4s var(--e-out)}
+.pill:hover{background:#fff;color:#111;translate:0 -2px}
+.mark{font:400 30px/1 "Bebas Neue";letter-spacing:.04em}.mark b{color:var(--blue);font-weight:400}
+main{display:grid;grid-template-columns:1.05fr 1fr;min-height:100vh}
+.atmo{position:fixed;inset:0;z-index:-1;background:radial-gradient(42% 55% at 76% 48%,rgba(34,81,255,.38),transparent 70%),#050507}
+.left{padding:120px 3vw 70px 6vw}
+.kicker{font-size:11px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--blueL)}
+h1{font-size:clamp(70px,8.5vw,150px);margin-top:10px}h1 em{font-style:normal;color:var(--blue)}
+.brief{margin-top:34px;padding:22px;border-radius:24px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(10px);max-width:560px}
+.brief label{display:block;font-size:10.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--mut);margin:16px 0 9px}
+.brief label:first-child{margin-top:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips button{border:1px solid rgba(255,255,255,.18);background:transparent;border-radius:999px;padding:10px 15px;font-size:13px;font-weight:700;cursor:pointer;transition:background .3s,border-color .3s,scale .25s var(--e-sig)}
+.chips button:hover{border-color:#fff}
+.chips button.on{background:var(--blue);border-color:var(--blue)}
+.chips button:active{scale:.94}
+.brief input,.brief textarea{width:100%;background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:13px 15px;font-size:14.5px;resize:vertical;transition:border-color .3s}
+.brief input:focus,.brief textarea:focus{border-color:var(--blue);outline:none}
+.send{margin-top:18px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.send small{font-size:12px;color:var(--mut)}
+.cta{position:relative;display:inline-flex;align-items:center;gap:10px;padding:16px 26px;border-radius:999px;font-weight:700;font-size:14.5px;color:#fff;overflow:hidden;isolation:isolate;
+  background:linear-gradient(180deg,rgba(255,255,255,.2),transparent 42%,rgba(0,0,0,.25)),var(--blue);box-shadow:inset 0 1px 0 rgba(255,255,255,.28),0 12px 34px -10px rgba(34,81,255,.8);transition:translate .45s var(--e-out)}
+.cta:hover{translate:0 -2px}
+.cta::before{content:"";position:absolute;top:-20%;bottom:-20%;width:42%;left:-45%;rotate:14deg;z-index:-1;background:linear-gradient(90deg,transparent,rgba(255,255,255,.5),transparent);filter:blur(5px);animation:sheen 5.5s linear infinite}
+@keyframes sheen{0%,55%{left:-45%}85%,100%{left:115%}}
+.links{margin-top:22px;display:grid;grid-template-columns:repeat(2,1fr);gap:10px;max-width:560px}
+.lk{display:flex;justify-content:space-between;align-items:center;padding:15px 17px;border-radius:18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);transition:background .35s,translate .35s var(--e-out)}
+.lk:hover{background:rgba(255,255,255,.09);translate:0 -3px}
+.lk small{display:block;font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--mut)}
+.lk b{font-size:14px}
+.lk button{border:0;background:#fff;color:#111;border-radius:999px;padding:8px 12px;font-size:11.5px;font-weight:700;cursor:pointer}
+.right{position:sticky;top:0;height:100vh}
+#monoGL{width:100%;height:100%;display:block}
+.toast{position:fixed;left:0;right:0;margin-inline:auto;width:fit-content;bottom:26px;z-index:70;background:#fff;color:#111;padding:12px 18px;border-radius:999px;font-size:13px;font-weight:700;opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s}
+.toast.on{opacity:1;visibility:visible}
+@media (max-width:900px){main{grid-template-columns:1fr}.right{position:relative;height:46vh;order:-1}.left{padding:20px 5vw 70px}.links{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.cta::before{animation:none}}
+</style>
+</head>
+<body>
+<div class="grain"></div><div class="atmo"></div>
+<div class="bar"><a class="pill" href="index.html">← Home</a><a class="mark" href="index.html" aria-label="%%NAME%% — home">%%NAMEU%%<b>.</b></a><span style="display:flex;gap:8px;align-items:center"><a class="pill" href="work.html">Work ↗</a><button class="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mmenu"><i></i><i></i></button></span></div>
+<main>
+  <div class="left">
+    <div class="kicker">Contact</div>
+    <h1 class="disp">Let's make<br/>something <em>bold.</em></h1>
+    <form class="brief" id="brief" novalidate>
+      <label>What do you need?</label>
+      <div class="chips" id="need"><button type="button">Flyer</button><button type="button">Party / event design</button><button type="button">Logo</button><button type="button">Social media posts</button><button type="button">Something else</button></div>
+      <label>When?</label>
+      <div class="chips" id="when"><button type="button">ASAP</button><button type="button">This week</button><button type="button">This month</button></div>
+      <label for="nm">Your name</label><input id="nm" autocomplete="name" placeholder="e.g. Chioma"/>
+      <label for="msg">Anything else?</label><textarea id="msg" rows="3" placeholder="Brand name, event date, colours you like…"></textarea>
+      <div class="send"><small>Opens WhatsApp with your message ready.</small><a class="cta" id="go" href="https://wa.me/2348025906665" target="_blank" rel="noopener"><span>Send on WhatsApp</span><span>→</span></a></div>
+    </form>
+    <div class="links">
+      <div class="lk"><div><small>WhatsApp</small><b id="wa">+234 802 590 6665</b></div><button id="copy" type="button">Copy</button></div>
+      <a class="lk" href="https://www.instagram.com/_austi.nnn" target="_blank" rel="noopener"><div><small>Instagram</small><b>@_austi.nnn</b></div><span>↗</span></a>
+      <a class="lk" href="https://www.tiktok.com/@_austins.touch" target="_blank" rel="noopener"><div><small>TikTok</small><b>@_austins.touch</b></div><span>↗</span></a>
+      <a class="lk" href="https://x.com/Austins_touch" target="_blank" rel="noopener"><div><small>X</small><b>@Austins_touch</b></div><span>↗</span></a>
+      <a class="lk" href="https://linktr.ee/austins_touch" target="_blank" rel="noopener" style="grid-column:1/-1"><div><small>All links</small><b>linktr.ee/austins_touch</b></div><span>↗</span></a>
+    </div>
+  </div>
+  <div class="right"><canvas id="monoGL" aria-hidden="true"></canvas></div>
+</main>
+<div class="toast" id="toast">Copied</div>
+<script type="module">
+const STILL=new URLSearchParams(location.search).has("still")||matchMedia("(prefers-reduced-motion: reduce)").matches;
+// ---- brief -> WhatsApp message ----
+const pick=(id,multi)=>{const el=document.getElementById(id);el.querySelectorAll("button").forEach(b=>b.addEventListener("click",()=>{if(!multi)el.querySelectorAll("button").forEach(x=>x!==b&&x.classList.remove("on"));b.classList.toggle("on");upd();}));};
+pick("need",true);pick("when",false);
+const go=document.getElementById("go");
+function upd(){const need=[...document.querySelectorAll("#need .on")].map(b=>b.textContent),when=[...document.querySelectorAll("#when .on")].map(b=>b.textContent)[0],nm=document.getElementById("nm").value.trim(),msg=document.getElementById("msg").value.trim();
+  let t=`Hi %%NAME%%!${nm?` I'm ${nm}.`:""} I'd like ${need.length?need.join(", ").toLowerCase():"a design"}${when?` — ${when.toLowerCase()}`:""}.${msg?`\n\n${msg}`:""}`;
+  go.href="https://wa.me/2348025906665?text="+encodeURIComponent(t);}
+["nm","msg"].forEach(id=>document.getElementById(id).addEventListener("input",upd));upd();
+document.getElementById("brief").addEventListener("submit",e=>e.preventDefault());
+const toast=document.getElementById("toast");document.getElementById("copy").addEventListener("click",async()=>{const v=document.getElementById("wa").textContent;try{await navigator.clipboard.writeText(v);toast.textContent="Copied "+v;}catch{toast.textContent=v;}toast.classList.add("on");setTimeout(()=>toast.classList.remove("on"),1800);});
+// ---- 3D "A" monogram ----
+let THREE;try{THREE=await import("./vendor/three.module.js");}catch{THREE=await import("https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js");}
+const mc=document.getElementById("monoGL");const mr=new THREE.WebGLRenderer({canvas:mc,antialias:true,alpha:true});mr.setPixelRatio(Math.min(devicePixelRatio,2));mr.toneMapping=THREE.ACESFilmicToneMapping;mr.outputColorSpace=THREE.SRGBColorSpace;
+function makeEnv(r){const s=new THREE.Scene();s.add(new THREE.Mesh(new THREE.SphereGeometry(30,32,16),new THREE.MeshBasicMaterial({color:0x07080e,side:THREE.BackSide})));
+  const box=(w,h,x,y,z,c,i)=>{const m=new THREE.Mesh(new THREE.PlaneGeometry(w,h),new THREE.MeshBasicMaterial({color:new THREE.Color(c).multiplyScalar(i),side:THREE.DoubleSide}));m.position.set(x,y,z);m.lookAt(0,0,0);s.add(m);};
+  box(14,6,0,14,4,0xffffff,3);box(6,12,-14,2,6,0xffffff,2.2);box(6,12,15,0,2,0x6f8dff,2.4);box(20,3,0,-12,-8,0x2251ff,1.6);box(8,8,0,4,-16,0xffffff,1.2);
+  const pm=new THREE.PMREMGenerator(r);const t=pm.fromScene(s,.04).texture;pm.dispose();return t;}
+const ms=new THREE.Scene();ms.environment=makeEnv(mr);ms.environmentIntensity=1.9;const mk=new THREE.DirectionalLight(0xffffff,2.2);mk.position.set(-4,5,8);ms.add(mk);
+const mcam=new THREE.PerspectiveCamera(32,1,.1,100);mcam.position.set(0,0,12);
+const blue=new THREE.MeshPhysicalMaterial({color:0x2a5cff,roughness:.18,metalness:.15,clearcoat:1,clearcoatRoughness:.08,emissive:0x0b2bb8,emissiveIntensity:.55});
+const chrome=new THREE.MeshStandardMaterial({color:0xffffff,roughness:.08,metalness:1});const white=new THREE.MeshPhysicalMaterial({color:0xf2f4fa,roughness:.32,clearcoat:1});
+const E=new THREE.Shape();[[0,0],[1.02,0],[1.36,1.02],[2.64,1.02],[2.98,0],[4,0],[2.58,4],[1.42,4]].forEach(([x,y],i)=>i?E.lineTo(x,y):E.moveTo(x,y));E.closePath();const Eh=new THREE.Path();[[1.62,1.78],[2,2.95],[2.38,1.78]].forEach(([x,y],i)=>i?Eh.lineTo(x,y):Eh.moveTo(x,y));Eh.closePath();E.holes.push(Eh);
+const eg=new THREE.ExtrudeGeometry(E,{depth:.9,bevelEnabled:true,bevelThickness:.14,bevelSize:.14,bevelSegments:6});eg.center();
+const mono=new THREE.Group();ms.add(mono);mono.add(new THREE.Mesh(eg,blue));const dot=new THREE.Mesh(new THREE.SphereGeometry(.42,48,32),chrome);dot.position.set(2.45,-1.7,.55);mono.add(dot);
+const ring=new THREE.Mesh(new THREE.TorusGeometry(3.3,.035,16,160),white);ring.rotation.x=1.25;ms.add(ring);
+const orbs=[0,1,2].map(i=>{const m=new THREE.Mesh(new THREE.SphereGeometry(.16+i*.05,32,24),i===1?white:chrome);ms.add(m);return m;});
+let px=0,py=0;addEventListener("pointermove",e=>{px=e.clientX/innerWidth*2-1;py=e.clientY/innerHeight*2-1;},{passive:true});
+let spinV=0;mc.addEventListener("click",()=>spinV=.5);
+function rs(){const r=mc.getBoundingClientRect();if(r.width<2||r.height<2)return;mr.setSize(r.width,r.height,false);mcam.aspect=r.width/r.height;mcam.position.z=r.width<r.height?15:12;mcam.updateProjectionMatrix();}
+rs();new ResizeObserver(rs).observe(mc);
+const clock=new THREE.Clock();
+(function f(){requestAnimationFrame(f);const t=STILL?1.2:clock.getElapsedTime();spinV*=.95;
+  mono.rotation.y+=((px*.8+Math.sin(t*.5)*.35-.2)-mono.rotation.y)*.05+spinV*.3;mono.rotation.x+=((py*.35)-mono.rotation.x)*.05;mono.position.y=Math.sin(t*.9)*.12;
+  ring.rotation.z=t*.15;orbs.forEach((o,i)=>{const a=t*(.45+i*.12)+i*2.1;o.position.set(Math.cos(a)*3.3,Math.sin(a)*3.3*Math.cos(1.25),-Math.sin(a)*3.3*Math.sin(1.25));});
+  mr.render(ms,mcam);})();
+</script>
+%%MENU%%
+</body>
+</html>
